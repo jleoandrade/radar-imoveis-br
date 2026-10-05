@@ -1,0 +1,274 @@
+# Baixa a lista da Caixa, analisa e publica no GitHub Pages.
+#
+# O trabalho "publicar" envia a pasta site/ empacotada. Não precisa de
+# senha nem de token — o próprio GitHub autoriza.
+#
+# O commit que o trabalho "construir" dá em site/dados/ serve a dois
+# propósitos: guarda o histórico no repositório e, se um dia você ligar a
+# Vercel (o vercel.json já está pronto para isso), é esse commit que ela
+# enxerga para republicar. Sem a Vercel ligada, o commit fica no
+# repositório e nada mais acontece — não dá erro.
+#
+# Dispara de três formas:
+#   1. Sozinho, três vezes por dia (06:10, 13:40 e 20:25 de Brasília).
+#   2. Pelo botão "Run workflow", na aba Actions.
+#   3. Quando você edita o código (não quando o robô grava dados — veja a
+#      exclusão de caminho logo abaixo).
+name: Atualizar radar
+
+on:
+  schedule:
+    # O GitHub SEMPRE agenda em UTC. O horário de referência é o de
+    # Brasília, UTC-3 o ano inteiro (o horário de verão acabou em 2019),
+    # então some 3 horas. Acre e parte do Amazonas estão 1 ou 2 horas
+    # atrás, mas a lista é a mesma para o país inteiro — o horário só
+    # decide QUANDO o robô roda, não o que ele traz.
+    #
+    # POR QUE TRÊS HORÁRIOS, E NÃO UM
+    # Execução agendada em repositório gratuito entra numa fila de baixa
+    # prioridade, e o GitHub avisa que pode atrasar — ou até descartar.
+    # Medido aqui: agendado para 06:10, rodou 11:17 num dia e 11:45 no
+    # outro. Cinco horas de atraso.
+    # Com três disparos, basta um pegar fila curta para os dados do dia
+    # entrarem. Não é desperdício: quando a lista não mudou, a execução
+    # termina em 40 segundos.
+    - cron: "10 9 * * *"     # 06:10 em Brasília — manhã
+    - cron: "40 16 * * *"    # 13:40 em Brasília — tarde
+    - cron: "25 23 * * *"    # 20:25 em Brasília — noite
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "!site/dados/**"   # IMPORTANTE: sem isto o robô dispara a si mesmo
+      - "analise/**"
+      - "scripts/**"
+      - ".github/workflows/atualizar.yml"
+
+# Só uma execução por vez: duas ao mesmo tempo brigariam pelo histórico.
+concurrency:
+  group: radar
+  cancel-in-progress: false
+
+permissions:
+  contents: write      # para gravar os dados e o histórico
+  pages: write         # para publicar no GitHub Pages
+  id-token: write
+
+jobs:
+  # ------------------------------------------------------------ construir
+  construir:
+    runs-on: ubuntu-latest
+    # 600 páginas a 1,2s dão ~18 min, mais o download nacional e duas
+    # análises de 18 mil imóveis. 45 minutos é folga, não aperto.
+    timeout-minutes: 45
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0     # o "git pull --rebase" lá embaixo precisa disto
+
+      - name: Preparar o Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar as bibliotecas
+        run: pip install -r scripts/requirements.txt
+
+      - name: Baixar a lista da Caixa e analisar
+        # SEM ARGUMENTO = Brasil inteiro. A Caixa publica um arquivo por
+        # estado E um arquivo com tudo (Lista_imoveis_geral.csv); conferido,
+        # o nacional é byte a byte a soma dos 27. Então é UM download de
+        # 6,6 MB, não 27 requisições.
+        run: python scripts/gerar_dados.py
+
+      - name: Conferir cada imóvel na página da Caixa (existe? está ocupado?)
+        # Uma visita por imóvel responde DUAS perguntas:
+        #
+        # 1. O imóvel ainda existe? A lista é a fotografia do dia em que
+        #    foi gerada; entre ela e agora, imóvel é arrematado e leilão
+        #    encerra, e a página passa a dizer "Nenhum imóvel encontrado".
+        #    Quem a página NEGAR sai do site. Erro de rede não tira
+        #    ninguém — a regra de três estados está em analise/ocupacao.py.
+        # 2. Está ocupado? Isso não vem no arquivo que a Caixa publica, e
+        #    é o segundo item mais caro da conta.
+        #
+        # 600 por execução, uma a uma e com pausa de 1,2s — menos de uma
+        # requisição por segundo, cerca de 18 minutos.
+        #
+        # Com 18.266 imóveis a fila deixou de ser "todos, por ordem" e
+        # passou a ser por MÉRITO: primeiro os marcados como fora do ar
+        # (é o que permite o imóvel voltar quando o leilão não arremata),
+        # depois os destaques nunca lidos, depois os destaques com leitura
+        # vencida, e só então o resto. Destaque é reconferido a cada 7
+        # dias; o resto a cada 30. Em regime são ~1.005 páginas por dia
+        # contra as 1.800 que três execuções permitem.
+        #
+        # Por que não 7 dias para todo mundo: daria 2.609 páginas por dia,
+        # mais do que cabe. A conta não fecha, então a prioridade decide.
+        #
+        # continue-on-error porque isto é um ENRIQUECIMENTO. Se a Caixa
+        # recusar ou mudar a página, quem não foi lido fica como "não
+        # informada" — que é exatamente o que o site mostrava antes de
+        # este passo existir. Nada regride, e a publicação segue.
+        continue-on-error: true
+        run: |
+          python scripts/ocupacao.py --limite 600
+          python scripts/gerar_dados.py
+
+      - name: Conferir se o resultado faz sentido
+        # O portão. Se a lista da Caixa vier vazia, incompleta ou com as
+        # colunas trocadas, a execução para AQUI: nada é publicado e os
+        # dois sites continuam mostrando os dados bons da véspera.
+        run: python scripts/conferir.py
+
+      - name: Gravar os dados e o histórico
+        # Guarda no repositório o que não dá para reconstruir depois: a
+        # data de primeira aparição e o último preço de cada imóvel, e o
+        # que foi lido em cada página da Caixa.
+        #
+        # Como o gatilho de push exclui site/dados/**, gravar aqui NÃO
+        # dispara o workflow de novo — seria um laço infinito.
+        id: gravar
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/dados
+          # Um de cada vez, e só se existir: 'git add a.json b.json' falha
+          # INTEIRO quando um dos caminhos não existe, e aí nada entraria
+          # no commit. Na primeira execução, ocupacao.json ainda não existe.
+          for arquivo in dados/historico.json dados/ocupacao.json; do
+            # o || true é necessário: o Actions roda com 'bash -e', e um
+            # teste falso na última volta derrubaria o passo inteiro
+            [ -f "$arquivo" ] && git add "$arquivo" || true
+          done
+          if git diff --staged --quiet; then
+            echo "Nada mudou desde a última execução."
+            exit 0
+          fi
+          git commit -m "radar: atualizacao de $(date +%d/%m/%Y)"
+
+          # A execução leva minutos. Nesse intervalo o repositório pode ter
+          # recebido outro commit — uma edição sua pelo site do GitHub, por
+          # exemplo — e aí o push é recusado. Em vez de falhar, traz o que
+          # chegou e tenta de novo.
+          for tentativa in 1 2 3 4 5; do
+            if git push; then
+              echo "Histórico gravado."
+              exit 0
+            fi
+            echo "Push recusado (tentativa $tentativa de 5). Trazendo o que mudou..."
+            sleep $((tentativa * 3))
+            git pull --rebase origin main || { git rebase --abort || true; break; }
+          done
+          echo "::error::Não consegui gravar o histórico desta vez."
+          exit 1
+
+      - name: Empacotar o site para o GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Resumo da execução
+        if: always()
+        run: |
+          echo "### Radar atualizado" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.gravar.outcome }}" != "success" ]; then
+            echo "> [!WARNING]" >> $GITHUB_STEP_SUMMARY
+            echo "> **O histórico NÃO foi gravado hoje.** O site publicou" \
+                 "normalmente, mas a data de primeira aparição dos imóveis" \
+                 "novos de hoje ficará com a data de amanhã. Rode o" \
+                 "\"Run workflow\" de novo para corrigir." >> $GITHUB_STEP_SUMMARY
+            echo "" >> $GITHUB_STEP_SUMMARY
+          fi
+          if [ -f site/dados/indice.json ]; then
+            python - <<'FIM' >> $GITHUB_STEP_SUMMARY
+          import json
+          r = json.load(open("site/dados/indice.json", encoding="utf-8"))
+          estados = r.get("estados", [])
+          print(f"- **{r['total']}** imóveis em **{len(estados)}** estados "
+                f"({r['capital']} em capital, {r['metropolitana']} em região "
+                f"metropolitana, {r['interior']} no interior)")
+          maiores = ", ".join(f"{e['uf']} {e['total']}" for e in estados[:5])
+          print(f"- Maiores: {maiores}")
+          print(f"- **{r['destaques']}** destaques, **{r['novos']}** novos")
+          print(f"- **{r['vetados']}** vetados (preço acima da avaliação)")
+          print(f"- Desconto anunciado {r['desconto_anunciado_mediano']:.1%} "
+                f"→ real {r['desconto_real_mediano']:.1%}")
+          if r.get("fora_do_ar"):
+              print(f"- **{r['fora_do_ar']}** estavam na lista mas já saíram "
+                    f"do site da Caixa — removidos")
+          print(f"- Lista da Caixa de {r['data_da_lista']}")
+
+          # DUAS CONTAS DIFERENTES, e misturá-las engana:
+          #   conferidas  — quantas páginas o robô já visitou. Mede o
+          #                 progresso da fila, que anda 300 por dia.
+          #   afirmaram   — em quantas a Caixa de fato disse a situação.
+          #                 Mede o que a FONTE publica, não o nosso avanço.
+          # Juntar as duas numa linha só já produziu um "0% do acervo
+          # apurado" com 85% das páginas lidas. São coisas diferentes.
+          import os.path
+          o = r.get("ocupacao", {})
+          afirmaram = o.get("ocupado", 0) + o.get("desocupado", 0)
+          total = max(r["total"], 1)
+          conferidas = 0
+          if os.path.exists("dados/ocupacao.json"):
+              cache = json.load(open("dados/ocupacao.json", encoding="utf-8"))
+              conferidas = sum(1 for k in cache if not str(k).startswith("_"))
+
+          print(f"- Páginas da Caixa conferidas: **{conferidas}** de {total} "
+                f"({conferidas / total:.0%} do acervo)")
+          print(f"- Dessas, **{afirmaram}** informaram a situação de "
+                f"ocupação: {o.get('ocupado', 0)} ocupados, "
+                f"{o.get('desocupado', 0)} desocupados")
+
+          if conferidas >= 100 and afirmaram == 0:
+              print("")
+              print("> [!WARNING]")
+              print(f"> **{conferidas} páginas conferidas e NENHUMA afirmou "
+                    f"ocupação.** Se antes já houve imóvel marcado, a página "
+                    f"da Caixa provavelmente mudou de formato e o leitor "
+                    f"precisa de ajuste. O site segue funcionando com "
+                    f"'não informada', como antes.")
+          elif conferidas >= 100 and afirmaram / conferidas < 0.05:
+              print("")
+              print(f"> [!NOTE]")
+              print(f"> A Caixa informa a ocupação em pouquíssimos imóveis "
+                    f"({afirmaram} em {conferidas} páginas conferidas). Isso "
+                    f"é característica da fonte, não falha da leitura — por "
+                    f"isso a conta reserva provisão de desocupação por "
+                    f"precaução em todo imóvel não confirmado como vazio.")
+          FIM
+          else
+            echo "A geração falhou — nada foi publicado." >> $GITHUB_STEP_SUMMARY
+          fi
+
+  # ------------------------------------------------------------- publicar
+  # Trabalho separado de propósito: é o formato que o GitHub Pages exige,
+  # e assim uma falha aqui não desfaz o histórico que já foi gravado.
+  publicar:
+    needs: construir
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.publicacao.outputs.page_url }}
+    steps:
+      - name: Preparar o Pages
+        uses: actions/configure-pages@v5
+
+      - name: Publicar no GitHub Pages
+        id: publicacao
+        uses: actions/deploy-pages@v4
+
+      - name: Onde ficou
+        run: |
+          echo "### Site publicado" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "GitHub Pages: ${{ steps.publicacao.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Os dados e o histórico foram gravados no repositório." >> $GITHUB_STEP_SUMMARY
