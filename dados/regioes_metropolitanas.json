@@ -1,0 +1,495 @@
+{
+  "_leia": [
+    "Catálogo de regiões metropolitanas usado para separar mercado com",
+    "liquidez de mercado raso. Região metropolitana é criada por LEI",
+    "ESTADUAL (a do DF, por lei complementar federal) e a composição muda:",
+    "município entra, município sai. Por isso cada entrada traz 'fonte' e",
+    "'conferido'.",
+    "",
+    "conferido = false significa: a lista foi montada com os municípios",
+    "centrais, reconhecidos, de cada região, mas NINGUÉM abriu a lei para",
+    "conferir um por um. Trate como aproximação boa, não como fato. Para",
+    "qualquer uso formal, abra a lei citada em 'fonte'.",
+    "",
+    "O que acontece se um município estiver de fora: ele cai em 'interior',",
+    "perde 0,05 de nota e recebe a ressalva de mercado raso. Nada quebra.",
+    "Estado sem entrada aqui funciona igual, só sem a camada do meio.",
+    "",
+    "Para acrescentar ou corrigir: edite este arquivo, escreva o nome do",
+    "município como ele aparece na lista da Caixa (acento não importa, a",
+    "comparação ignora) e rode 'python scripts/gerar_dados.py'."
+  ],
+
+  "AL": [
+    {
+      "nome": "Região Metropolitana de Maceió",
+      "fonte": "Lei Complementar estadual 18/1998 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Maceió", "Rio Largo", "Marechal Deodoro", "Satuba",
+        "Santa Luzia do Norte", "Coqueiro Seco", "Barra de São Miguel",
+        "Paripueira", "Messias", "Murici", "Atalaia", "Pilar",
+        "São Miguel dos Campos", "Barra de Santo Antônio", "Boca da Mata",
+        "Campo Alegre", "Teotônio Vilela", "Junqueiro", "Cajueiro",
+        "Capela", "União dos Palmares", "Viçosa", "Branquinha",
+        "São Luís do Quitunde", "Joaquim Gomes", "Flexeiras"
+      ]
+    }
+  ],
+
+  "AM": [
+    {
+      "nome": "Região Metropolitana de Manaus",
+      "fonte": "Lei Complementar estadual 52/2007 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Manaus", "Iranduba", "Careiro da Várzea", "Rio Preto da Eva",
+        "Itacoatiara", "Novo Airão", "Presidente Figueiredo", "Autazes",
+        "Careiro", "Manacapuru", "Manaquiri", "Silves"
+      ]
+    }
+  ],
+
+  "BA": [
+    {
+      "nome": "Região Metropolitana de Salvador",
+      "fonte": "Lei Complementar federal 14/1973 e alterações estaduais — conferir",
+      "conferido": false,
+      "municipios": [
+        "Salvador", "Lauro de Freitas", "Camaçari", "Camacari",
+        "Simões Filho", "Candeias", "Dias d'Ávila",
+        "São Francisco do Conde", "Madre de Deus", "Itaparica",
+        "Vera Cruz", "Pojuca", "Mata de São João",
+        "São Sebastião do Passé"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana de Feira de Santana",
+      "fonte": "Lei Complementar estadual 35/2011 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Feira de Santana", "São Gonçalo dos Campos", "Conceição da Feira",
+        "Conceição do Jacuípe", "Amélia Rodrigues", "Tanquinho",
+        "Santa Bárbara", "Ipecaetá", "Irará", "Anguera",
+        "Antônio Cardoso", "Coração de Maria", "Elísio Medrado",
+        "Santanópolis", "São Sebastião do Passé", "Teodoro Sampaio"
+      ]
+    }
+  ],
+
+  "CE": [
+    {
+      "nome": "Região Metropolitana de Fortaleza",
+      "fonte": "Lei Complementar federal 14/1973 e LC estadual 18/1999 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Fortaleza", "Caucaia", "Maracanaú", "Maranguape", "Pacatuba",
+        "Horizonte", "Pacajus", "Itaitinga", "Eusébio", "Aquiraz",
+        "São Gonçalo do Amarante", "Guaiúba", "Chorozinho", "Cascavel",
+        "Pindoretama", "Paracuru", "Paraipaba", "São Luís do Curu",
+        "Trairi"
+      ]
+    }
+  ],
+
+  "ES": [
+    {
+      "nome": "Região Metropolitana da Grande Vitória",
+      "fonte": "Lei Complementar estadual 318/2005 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Vitória", "Vila Velha", "Serra", "Cariacica", "Viana",
+        "Guarapari", "Fundão"
+      ]
+    }
+  ],
+
+  "GO": [
+    {
+      "nome": "Entorno do Distrito Federal (RIDE)",
+      "fonte": "Lei Complementar federal 94/1998, atualizada pela LC 163/2018 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Luziânia", "Cidade Ocidental", "Santo Antônio do Descoberto",
+        "Águas Lindas de Goiás", "Valparaíso de Goiás",
+        "Cocalzinho de Goiás", "Planaltina", "Padre Bernardo",
+        "Novo Gama", "Cristalina", "Formosa", "Alexânia", "Abadiânia",
+        "Água Fria de Goiás", "Cabeceiras", "Mimoso de Goiás",
+        "Pirenópolis", "Vila Boa", "Corumbá de Goiás", "Alto Paraíso de Goiás",
+        "Cavalcante", "Flores de Goiás", "Niquelândia", "São João d'Aliança",
+        "Simolândia", "Vila Propício", "Barro Alto", "Goianésia"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana de Goiânia",
+      "fonte": "Lei Complementar estadual 27/1999 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Goiânia", "Aparecida de Goiânia", "Senador Canedo", "Trindade",
+        "Goianira", "Nerópolis", "Hidrolândia", "Santo Antônio de Goiás",
+        "Abadia de Goiás", "Aragoiânia", "Bela Vista de Goiás",
+        "Bonfinópolis", "Brazabrantes", "Caldazinha", "Caturaí",
+        "Guapó", "Inhumas", "Nova Veneza", "Terezópolis de Goiás"
+      ]
+    }
+  ],
+
+  "MA": [
+    {
+      "nome": "Região Metropolitana da Grande São Luís",
+      "fonte": "Lei Complementar estadual 038/1998 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "São Luís", "São José de Ribamar", "Paço do Lumiar", "Raposa",
+        "Alcântara", "Bacabeira", "Rosário", "Santa Rita", "Icatu",
+        "Axixá", "Morros", "Presidente Juscelino", "Cachoeira Grande"
+      ]
+    },
+    {
+      "nome": "RIDE da Grande Teresina",
+      "fonte": "Lei Complementar federal 112/2001 — Timon/MA integra a região de Teresina/PI. Conferir",
+      "conferido": false,
+      "municipios": ["Timon"]
+    }
+  ],
+
+  "MG": [
+    {
+      "nome": "Região Metropolitana de Belo Horizonte",
+      "fonte": "Lei Complementar federal 14/1973 e LC estadual 89/2006 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Belo Horizonte", "Betim", "Contagem", "Ribeirão das Neves",
+        "Santa Luzia", "Vespasiano", "Ibirité", "Sabará", "Nova Lima",
+        "Esmeraldas", "São Joaquim de Bicas", "Matozinhos",
+        "Jaboticatubas", "Igarapé", "Mário Campos", "Sarzedo",
+        "Brumadinho", "Caeté", "Confins", "Florestal", "Itaguara",
+        "Itatiaiuçu", "Juatuba", "Lagoa Santa", "Mateus Leme",
+        "Pedro Leopoldo", "Raposos", "Rio Acima", "Rio Manso",
+        "São José da Lapa", "Taquaraçu de Minas", "Baldim",
+        "Capim Branco", "Funilândia", "Inhaúma", "Jequitibá",
+        "Nova União", "Prudente de Morais"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana do Vale do Aço",
+      "fonte": "Lei Complementar estadual 51/1998 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Ipatinga", "Coronel Fabriciano", "Timóteo", "Santana do Paraíso"
+      ]
+    }
+  ],
+
+  "MS": [
+    {
+      "nome": "Região Metropolitana de Campo Grande",
+      "fonte": "Lei Complementar estadual 244/2017 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Campo Grande", "Terenos", "Jaraguari", "Sidrolândia", "Rochedo",
+        "Corguinho", "Bandeirantes", "Dois Irmãos do Buriti",
+        "Nova Alvorada do Sul", "Ribas do Rio Pardo"
+      ]
+    }
+  ],
+
+  "MT": [
+    {
+      "nome": "Região Metropolitana do Vale do Rio Cuiabá",
+      "fonte": "Lei Complementar estadual 359/2009 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Cuiabá", "Várzea Grande", "Santo Antônio de Leverger",
+        "Nossa Senhora do Livramento", "Acorizal", "Chapada dos Guimarães",
+        "Jangada", "Nobres", "Rosário Oeste"
+      ]
+    }
+  ],
+
+  "PA": [
+    {
+      "nome": "Região Metropolitana de Belém",
+      "fonte": "Lei Complementar federal 14/1973 e LC estadual 076/2010 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Belém", "Ananindeua", "Marituba", "Benevides",
+        "Santa Bárbara do Pará", "Santa Izabel do Pará", "Castanhal"
+      ]
+    }
+  ],
+
+  "PB": [
+    {
+      "nome": "Região Metropolitana de João Pessoa",
+      "fonte": "Lei Complementar estadual 59/2003 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "João Pessoa", "Santa Rita", "Bayeux", "Cabedelo", "Conde",
+        "Lucena", "Alhandra", "Rio Tinto", "Mamanguape",
+        "Cruz do Espírito Santo", "Pitimbu", "Caaporã", "Sapé",
+        "Pedras de Fogo", "Riachão do Poço", "Sobrado"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana de Campina Grande",
+      "fonte": "Lei Complementar estadual 92/2009 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Campina Grande", "Lagoa Seca", "Queimadas", "Boqueirão",
+        "Caturité", "Fagundes", "Massaranduba", "Puxinanã",
+        "Serra Redonda", "Boa Vista", "Riachão do Bacamarte",
+        "São Sebastião de Lagoa de Roça", "Itatuba", "Ingá",
+        "Gado Bravo", "Aroeiras"
+      ]
+    }
+  ],
+
+  "PE": [
+    {
+      "nome": "Região Metropolitana do Recife",
+      "fonte": "Lei Complementar federal 14/1973 e leis estaduais posteriores. Conferir na Agência CONDEPE/FIDEM",
+      "conferido": true,
+      "municipios": [
+        "Recife", "Olinda", "Jaboatão dos Guararapes", "Paulista",
+        "Camaragibe", "São Lourenço da Mata", "Abreu e Lima",
+        "Cabo de Santo Agostinho", "Igarassu", "Itapissuma",
+        "Ilha de Itamaracá", "Araçoiaba", "Moreno", "Ipojuca", "Goiana"
+      ]
+    }
+  ],
+
+  "PI": [
+    {
+      "nome": "RIDE da Grande Teresina",
+      "fonte": "Lei Complementar federal 112/2001 e LC estadual 219/2010 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Teresina", "Demerval Lobão", "Altos", "José de Freitas",
+        "Lagoa Alegre", "Monsenhor Gil", "União", "Alto Longá",
+        "Beneditinos", "Coivaras", "Curralinhos", "Lagoa do Piauí",
+        "Miguel Leão", "Nazária", "Pau d'Arco do Piauí", "Palmeirais"
+      ]
+    }
+  ],
+
+  "PR": [
+    {
+      "nome": "Região Metropolitana de Curitiba",
+      "fonte": "Lei Complementar federal 14/1973 e leis estaduais posteriores — conferir",
+      "conferido": false,
+      "municipios": [
+        "Curitiba", "Campo Largo", "Fazenda Rio Grande",
+        "São José dos Pinhais", "Araucária", "Almirante Tamandaré",
+        "Piraquara", "Contenda", "Colombo", "Pinhais", "Quatro Barras",
+        "Campina Grande do Sul", "Balsa Nova", "Bocaiúva do Sul",
+        "Mandirituba", "Tijucas do Sul", "Agudos do Sul", "Lapa",
+        "Quitandinha", "Rio Branco do Sul", "Itaperuçu", "Cerro Azul",
+        "Doutor Ulysses", "Tunas do Paraná", "Adrianópolis",
+        "Campo do Tenente", "Piên", "Rio Negro", "Campo Magro"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana de Londrina",
+      "fonte": "Lei Complementar estadual 81/1998 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Londrina", "Cambé", "Ibiporã", "Rolândia", "Jataizinho",
+        "Tamarana", "Bela Vista do Paraíso", "Sertanópolis",
+        "Primeiro de Maio", "Alvorada do Sul", "Pitangueiras",
+        "Assaí", "Jaguapitã", "Florestópolis", "Prado Ferreira",
+        "Centenário do Sul", "Lupionópolis", "Miraselva",
+        "Porecatu", "Sabáudia", "Guaraci", "Cafeara", "Rancho Alegre"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana de Maringá",
+      "fonte": "Lei Complementar estadual 83/1998 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Maringá", "Sarandi", "Paiçandu", "Marialva", "Mandaguaçu",
+        "Mandaguari", "Ângulo", "Astorga", "Floresta", "Iguaraçu",
+        "Itambé", "Ivatuba", "Doutor Camargo", "Floraí",
+        "Munhoz de Melo", "Ourizona", "Presidente Castelo Branco",
+        "Santa Fé", "São Jorge do Ivaí", "Flórida", "Lobato",
+        "Nossa Senhora das Graças", "Atalaia", "Cambira",
+        "Jandaia do Sul", "Bom Sucesso"
+      ]
+    }
+  ],
+
+  "RJ": [
+    {
+      "nome": "Região Metropolitana do Rio de Janeiro",
+      "fonte": "Lei Complementar federal 20/1974 e LC estadual 158/2013 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Rio de Janeiro", "São Gonçalo", "Nova Iguaçu", "Itaboraí",
+        "Belford Roxo", "Mesquita", "Itaguaí", "Queimados", "Niterói",
+        "Duque de Caxias", "Magé", "Nilópolis", "Maricá",
+        "São João de Meriti", "Tanguá", "Seropédica", "Japeri",
+        "Guapimirim", "Paracambi", "Rio Bonito", "Cachoeiras de Macacu"
+      ]
+    }
+  ],
+
+  "RN": [
+    {
+      "nome": "Região Metropolitana de Natal",
+      "fonte": "Lei Complementar estadual 152/1997 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Natal", "Parnamirim", "São Gonçalo do Amarante", "Extremoz",
+        "Macaíba", "Ceará-Mirim", "São José de Mipibu", "Nísia Floresta",
+        "Monte Alegre", "Vera Cruz", "Ielmo Marinho", "Maxaranguape",
+        "Arês", "Goianinha", "Bom Jesus", "Espírito Santo",
+        "Januário Cicco", "São Paulo do Potengi", "Riachuelo",
+        "Santa Maria", "Tibau do Sul"
+      ]
+    }
+  ],
+
+  "RS": [
+    {
+      "nome": "Região Metropolitana de Porto Alegre",
+      "fonte": "Lei Complementar federal 14/1973 e leis estaduais posteriores — conferir",
+      "conferido": false,
+      "municipios": [
+        "Porto Alegre", "Alvorada", "Cachoeirinha", "Canoas", "Esteio",
+        "Gravataí", "Guaíba", "Novo Hamburgo", "São Leopoldo",
+        "Sapucaia do Sul", "Viamão", "Eldorado do Sul", "Charqueadas",
+        "Montenegro", "Igrejinha", "Três Coroas", "Araricá",
+        "Arroio dos Ratos", "Capela de Santana", "Dois Irmãos",
+        "Glorinha", "Ivoti", "Nova Hartz", "Nova Santa Rita",
+        "Parobé", "Portão", "Rolante", "Santo Antônio da Patrulha",
+        "São Jerônimo", "São Sebastião do Caí", "Sapiranga", "Taquara",
+        "Triunfo", "Campo Bom", "Estância Velha", "Lindolfo Collor",
+        "Morro Reuter", "Presidente Lucena", "Santa Maria do Herval",
+        "São Vendelino"
+      ]
+    }
+  ],
+
+  "SC": [
+    {
+      "nome": "Região Metropolitana de Florianópolis",
+      "fonte": "Lei Complementar estadual 636/2014 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Florianópolis", "São José", "Palhoça", "Biguaçu",
+        "Santo Amaro da Imperatriz", "Águas Mornas", "Antônio Carlos",
+        "Governador Celso Ramos", "São Pedro de Alcântara"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana do Norte/Nordeste Catarinense",
+      "fonte": "Lei Complementar estadual 636/2014 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Joinville", "Araquari", "Balneário Barra do Sul", "Barra Velha",
+        "Corupá", "Garuva", "Guaramirim", "Itapoá", "Jaraguá do Sul",
+        "Massaranduba", "São João do Itaperiú", "São Francisco do Sul",
+        "Schroeder"
+      ]
+    }
+  ],
+
+  "SE": [
+    {
+      "nome": "Região Metropolitana de Aracaju",
+      "fonte": "Lei Complementar federal 14/1973 e LC estadual 25/1995 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Aracaju", "Nossa Senhora do Socorro", "São Cristóvão",
+        "Barra dos Coqueiros"
+      ]
+    }
+  ],
+
+  "SP": [
+    {
+      "nome": "Região Metropolitana de São Paulo",
+      "fonte": "Lei Complementar federal 14/1973 e LC estadual 1.139/2011 — conferir",
+      "conferido": false,
+      "municipios": [
+        "São Paulo", "Guarulhos", "Osasco", "Santo André",
+        "São Bernardo do Campo", "São Caetano do Sul", "Diadema",
+        "Mauá", "Ribeirão Pires", "Rio Grande da Serra", "Barueri",
+        "Carapicuíba", "Itapevi", "Jandira", "Cotia", "Embu das Artes",
+        "Taboão da Serra", "Itapecerica da Serra",
+        "São Lourenço da Serra", "Juquitiba", "Embu-Guaçu",
+        "Mairiporã", "Caieiras", "Franco da Rocha",
+        "Francisco Morato", "Cajamar", "Santana de Parnaíba",
+        "Pirapora do Bom Jesus", "Arujá", "Santa Isabel", "Guararema",
+        "Mogi das Cruzes", "Suzano", "Poá", "Itaquaquecetuba",
+        "Ferraz de Vasconcelos", "Biritiba-Mirim", "Salesópolis",
+        "Vargem Grande Paulista"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana de Campinas",
+      "fonte": "Lei Complementar estadual 870/2000 e alterações — conferir",
+      "conferido": false,
+      "municipios": [
+        "Campinas", "Sumaré", "Hortolândia", "Americana",
+        "Santa Bárbara d'Oeste", "Nova Odessa", "Monte Mor",
+        "Paulínia", "Valinhos", "Vinhedo", "Jaguariúna", "Indaiatuba",
+        "Itatiba", "Pedreira", "Cosmópolis", "Artur Nogueira",
+        "Engenheiro Coelho", "Holambra", "Morungaba",
+        "Santo Antônio de Posse"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana da Baixada Santista",
+      "fonte": "Lei Complementar estadual 815/1996 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Santos", "São Vicente", "Praia Grande", "Guarujá", "Cubatão",
+        "Itanhaém", "Mongaguá", "Peruíbe", "Bertioga"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana do Vale do Paraíba e Litoral Norte",
+      "fonte": "Lei Complementar estadual 1.166/2012 — conferir",
+      "conferido": false,
+      "municipios": [
+        "São José dos Campos", "Taubaté", "Jacareí",
+        "Pindamonhangaba", "Caçapava", "Caraguatatuba", "Canas",
+        "Lorena", "Guaratinguetá", "Cruzeiro", "Aparecida",
+        "São Sebastião", "Ubatuba", "Ilhabela", "Tremembé",
+        "Campos do Jordão", "Cachoeira Paulista", "Igaratá",
+        "Jambeiro", "Monteiro Lobato", "Natividade da Serra",
+        "Paraibuna", "Redenção da Serra", "Santa Branca",
+        "São Luiz do Paraitinga", "Roseira", "Potim", "Piquete",
+        "Lavrinhas", "Queluz", "Silveiras", "São José do Barreiro",
+        "Bananal", "Arapeí", "Areias", "Cunha"
+      ]
+    },
+    {
+      "nome": "Região Metropolitana de Sorocaba",
+      "fonte": "Lei Complementar estadual 1.241/2014 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Sorocaba", "Votorantim", "Salto", "Itu", "Cerquilho",
+        "Boituva", "Capela do Alto", "Araçariguama", "Alumínio",
+        "Ibiúna", "Iperó", "Itapetininga", "Itapevi", "Jumirim",
+        "Mairinque", "Piedade", "Pilar do Sul", "Porto Feliz",
+        "Salto de Pirapora", "São Miguel Arcanjo", "São Roque",
+        "Sarapuí", "Tapiraí", "Tatuí", "Tietê", "Alambari",
+        "Araçoiaba da Serra", "Capão Bonito", "Guareí", "Indaiatuba"
+      ]
+    },
+    {
+      "nome": "Aglomeração Urbana de Ribeirão Preto",
+      "fonte": "Lei Complementar estadual 1.290/2016 — conferir",
+      "conferido": false,
+      "municipios": [
+        "Ribeirão Preto", "Sertãozinho", "Jardinópolis", "Brodowski",
+        "Cravinhos", "Dumont", "Guatapará", "Luís Antônio",
+        "Pradópolis", "Serra Azul", "Serrana", "Barrinha",
+        "Pitangueiras", "Pontal", "Santa Rosa de Viterbo",
+        "São Simão", "Mococa"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+# Só duas bibliotecas. O núcleo de análise não usa Dash, Plotly nem scipy
+# de propósito: assim a atualização automática roda em poucos segundos.
+pandas>=2.2
+requests>=2.31

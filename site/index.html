@@ -1,0 +1,2160 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<!-- ESTA LINHA É O QUE FAZ O SITE FUNCIONAR NO CELULAR.
+     Sem ela o navegador do telefone finge ter 980px de largura e encolhe a
+     página inteira — por isso o site aparecia como um computador em
+     miniatura. E, pior, nenhuma das regras @media abaixo chegava a valer,
+     porque o aparelho se declarava com 980px. A responsividade existia e
+     nunca era usada.
+     viewport-fit=cover libera as env(safe-area-inset-*), usadas mais
+     abaixo para o site não ficar sob o entalhe do iPhone. -->
+<meta name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#0c2742">
+<meta name="description" content="Imóveis retomados da Caixa no Brasil
+  com o desconto real: o que sobra depois de reforma, desocupação e
+  comissão. Atualiza sozinho todo dia.">
+<title>Radar Imóveis Brasil</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter+Tight:wght@400;500;600;700&display=swap">
+<style>
+/* LAYOUT: cabeçalho fixo sobre fundo de planta baixa, faixa de números,
+   filtros à esquerda (gaveta no celular) e duas abas à direita — Lista e
+   Comparar. O detalhe do imóvel abre numa gaveta lateral. Tema azul
+   institucional, claro e escuro. */
+:root {
+  --marinho: #0c2742;
+  --marinho-claro: #15395e;
+  --azul: #1f5fa8;
+  --azul-vivo: #2d7dd2;
+  --azul-fraco: #e8f0fa;
+  --fundo: #f3f6fa;
+  --painel: #ffffff;
+  --borda: #d5dfeb;
+  --borda-forte: #b6c6d8;
+  --texto: #0f1b28;
+  --fraco: #5a6b7e;
+  --bom: #12694a;
+  --bom-fundo: #e2f1ea;
+  --atencao: #8a5807;
+  --atencao-fundo: #fcf1dc;
+  --veto: #96281f;
+  --veto-fundo: #fae8e6;
+  --novo: #0f5280;
+  --novo-fundo: #e4f0f8;
+  --sombra: 0 1px 2px rgba(12, 39, 66, .07), 0 6px 18px rgba(12, 39, 66, .06);
+  --sombra-alta: 0 12px 40px rgba(12, 39, 66, .18);
+  --sans: "Inter Tight", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --trama: rgba(31, 95, 168, .055);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --marinho: #091825; --marinho-claro: #0f2e4d; --azul: #4d94e0;
+    --azul-vivo: #6aa9ec; --azul-fraco: #112941; --fundo: #0b131c;
+    --painel: #121d29; --borda: #243445; --borda-forte: #35495e;
+    --texto: #e6edf5; --fraco: #93a5b8; --bom: #5cc694; --bom-fundo: #113026;
+    --atencao: #dda63f; --atencao-fundo: #32250a;
+    --veto: #ef8a7b; --veto-fundo: #351814; --novo: #74b4e8;
+    --novo-fundo: #10263a; --trama: rgba(109, 169, 236, .05);
+    --sombra: 0 1px 2px rgba(0,0,0,.5); --sombra-alta: 0 12px 40px rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --marinho: #091825; --marinho-claro: #0f2e4d; --azul: #4d94e0;
+  --azul-vivo: #6aa9ec; --azul-fraco: #112941; --fundo: #0b131c;
+  --painel: #121d29; --borda: #243445; --borda-forte: #35495e;
+  --texto: #e6edf5; --fraco: #93a5b8; --bom: #5cc694; --bom-fundo: #113026;
+  --atencao: #dda63f; --atencao-fundo: #32250a;
+  --veto: #ef8a7b; --veto-fundo: #351814; --novo: #74b4e8;
+  --novo-fundo: #10263a; --trama: rgba(109, 169, 236, .05);
+  --sombra: 0 1px 2px rgba(0,0,0,.5); --sombra-alta: 0 12px 40px rgba(0,0,0,.6);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box }
+[hidden] { display: none !important }
+html, body { margin: 0 }
+body {
+  color: var(--texto); font-family: var(--sans); font-size: 14px;
+  line-height: 1.5; -webkit-text-size-adjust: 100%;
+  /* planta baixa: malha fina de 32px com um traço mais forte a cada 4 */
+  background:
+    linear-gradient(var(--trama) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(90deg, var(--trama) 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(160deg, var(--azul-fraco) 0%, var(--fundo) 38%) fixed;
+}
+h1, h2, h3 { margin: 0; text-wrap: balance }
+button, input, select { font: inherit; color: inherit }
+a { color: var(--azul) }
+svg.i { width: 1em; height: 1em; flex: none; fill: none; stroke: currentColor;
+  stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round }
+
+/* ------------------------------------------------------------ cabeçalho */
+.topo {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 500;
+  background: linear-gradient(180deg, var(--marinho), var(--marinho-claro));
+  color: #eaf2fb; box-shadow: var(--sombra);
+}
+.topo-linha {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px;
+  padding: 11px 20px; max-width: 1560px; margin: 0 auto;
+}
+.marca { display: flex; align-items: center; gap: 10px; min-width: 0 }
+.marca .brasao {
+  width: 32px; height: 32px; border-radius: 7px; flex: none;
+  background: linear-gradient(145deg, var(--azul-vivo), var(--azul));
+  display: grid; place-items: center; color: #fff;
+}
+.marca .brasao svg.i { width: 18px; height: 18px; stroke-width: 2 }
+.marca-texto { min-width: 0 }
+.marca h1 { font-size: 16px; font-weight: 700; letter-spacing: -.015em;
+  line-height: 1.15; color: #fff }
+.marca p {
+  margin: 0; font-family: var(--mono); font-size: 10px;
+  text-transform: uppercase; letter-spacing: .12em; color: #8fb6de;
+}
+.topo-acoes { display: flex; gap: 7px; margin-left: auto; flex-wrap: wrap }
+
+.botao {
+  display: inline-flex; align-items: center; gap: 6px; cursor: pointer;
+  padding: 7px 13px; border-radius: 7px; border: 1px solid var(--borda-forte);
+  background: var(--painel); font-weight: 500; font-size: 13px;
+  text-decoration: none; color: var(--texto);
+  transition: border-color .15s, background .15s;
+}
+.botao:hover { border-color: var(--azul) }
+.botao-claro {
+  background: rgba(255, 255, 255, .1); border-color: rgba(255, 255, 255, .22);
+  color: #eaf2fb;
+}
+.botao-claro:hover { background: rgba(255, 255, 255, .18);
+  border-color: rgba(255, 255, 255, .4) }
+.botao-forte {
+  background: var(--azul-vivo); border-color: var(--azul-vivo); color: #fff;
+  font-weight: 600;
+}
+.botao-forte:hover { filter: brightness(1.1) }
+.botao-pequeno { padding: 5px 10px; font-size: 12px }
+.botao[disabled] { opacity: .45; cursor: not-allowed }
+:focus-visible { outline: 2px solid var(--azul-vivo); outline-offset: 2px }
+
+/* A faixa de datas é a MESMA peça do cabeçalho: sem fundo próprio e sem
+   linha divisória, ela deixa o degradê de .topo passar por baixo e o
+   conjunto lê como um bloco só. */
+.aviso-atualizacao {
+  display: flex; flex-wrap: wrap; gap: 4px 20px; align-items: center;
+  padding: 0 20px 10px; max-width: 1560px; margin: 0 auto;
+  background: none; font-size: 12.5px; color: #a8c6e4;
+}
+.aviso-atualizacao b { color: #eaf2fb; font-weight: 600 }
+.aviso-atualizacao span { display: inline-flex; align-items: center; gap: 6px }
+/* só aparece na prévia offline, onde a lista é um recorte */
+.aviso-atualizacao .previa { background: #b45309; color: #fff;
+  padding: 2px 9px; border-radius: 999px; font-weight: 600 }
+
+/* ----------------------------------------------- cabeçalho no telefone */
+/* Só os rótulos de RSS e Tema somem; os ícones ficam, com o nome no
+   title e no aria-label. Assim as três ações cabem numa linha só. */
+@media (max-width: 560px) {
+  .topo-linha { padding: 9px 14px; gap: 8px }
+  .marca .brasao { width: 28px; height: 28px }
+  .marca h1 { font-size: 14.5px }
+  .marca p { font-size: 9px; letter-spacing: .1em }
+  .topo-acoes { gap: 5px }
+  .so-largura { display: none }
+  .aviso-atualizacao {
+    padding: 0 14px 9px; gap: 2px 14px; font-size: 11.5px;
+    flex-direction: column; align-items: flex-start;
+  }
+}
+
+/* ----------------------------------------------------------- indicadores */
+.numeros {
+  display: grid; gap: 10px; padding: 14px 20px 0; max-width: 1560px;
+  margin: 0 auto; grid-template-columns: repeat(auto-fit, minmax(146px, 1fr));
+}
+.numero {
+  background: var(--painel); border: 1px solid var(--borda);
+  border-radius: 10px; padding: 10px 13px; min-width: 0;
+  box-shadow: var(--sombra); position: relative; overflow: hidden;
+  /* coluna com o número ancorado na base: assim um rótulo que quebre em
+     duas linhas ("Desconto anunciado") não empurra o número para baixo e
+     desalinha a faixa inteira */
+  display: flex; flex-direction: column;
+}
+.numero::before {
+  content: ""; position: absolute; inset: 0 auto 0 0; width: 3px;
+  background: var(--borda-forte);
+}
+.numero.destaque::before { background: var(--azul-vivo) }
+.numero dt { font-size: 10.5px; text-transform: uppercase;
+  letter-spacing: .08em; color: var(--fraco); font-weight: 600;
+  display: flex; align-items: center; gap: 5px }
+.numero dd {
+  /* 'auto' no topo ancora o número na BASE do card. É o que impede que um
+     rótulo de duas linhas ("Desconto anunciado") empurre o número para
+     baixo e desalinhe a faixa inteira.
+
+     ⚠️ Este 'margin' tem de ficar AQUI, nesta regra. Já houve uma linha
+     '.numero dd { margin-top: auto }' mais acima no arquivo, e ela não
+     valia nada: esta regra vem depois, com a mesma especificidade, e o
+     atalho 'margin' reescreve o margin-top para 2px. O card ficava torto
+     e o defeito passou despercebido porque ninguém olhou o resultado
+     renderizado. */
+  margin: auto 0 0; font-family: var(--mono); font-size: 21px;
+  font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: -.03em;
+}
+/* o total geral, ao lado do número filtrado: "12 de 197" */
+.numero dd i { font-style: normal; font-size: 12px; font-weight: 400;
+  color: var(--fraco); margin-left: 5px; letter-spacing: 0 }
+
+/* ---------------------------------------------- cards que são filtros */
+/* Quatro dos sete cards ligam o filtro que representam. Precisam parecer
+   clicáveis sem virar botão berrante: o aviso é a borda e o fundo
+   mudando quando o filtro está ligado. */
+.numero.clicavel {
+  cursor: pointer; text-align: left; font: inherit; color: inherit;
+  width: 100%;
+  transition: border-color .15s, background .15s;
+}
+.numero.clicavel:hover { border-color: var(--azul) }
+.numero.clicavel[aria-pressed="true"] {
+  background: var(--azul-fraco); border-color: var(--azul);
+}
+.numero.clicavel[aria-pressed="true"]::before { background: var(--azul) }
+.numero.clicavel[aria-pressed="true"] dt { color: var(--azul) }
+.numero small { display: block; font-family: var(--sans); font-size: 11px;
+  font-weight: 400; color: var(--fraco) }
+.numero.destaque dd { color: var(--azul) }
+
+/* --------------------------------------------------------------- corpo */
+.corpo {
+  display: grid; grid-template-columns: 272px minmax(0, 1fr);
+  align-items: start; gap: 16px; padding: 14px 20px 20px;
+  max-width: 1560px; margin: 0 auto;
+}
+.filtros {
+  position: sticky; top: 150px; background: var(--painel);
+  border: 1px solid var(--borda); border-radius: 11px; padding: 14px;
+  box-shadow: var(--sombra); display: grid; gap: 12px;
+  /* align-content: start é obrigatório junto com max-height: sem ele o
+     grid distribui a altura disponível entre as linhas e os campos
+     achatam até virar um risco de 2px. */
+  align-content: start; max-height: calc(100vh - 168px); overflow-y: auto;
+}
+.filtros-cabeca { display: flex; align-items: center; gap: 8px }
+.filtros-cabeca h2 { margin-right: auto }
+/* Herda .fechar, desenhado para o topo escuro da gaveta; aqui o fundo é
+   branco, então a cor volta ao tema claro.
+   O seletor é button.filtros-fechar, e não .filtros-fechar: a regra
+   .fechar { display: grid } aparece DEPOIS no arquivo e, com a mesma
+   especificidade de uma classe, venceria — e o × apareceria no
+   computador, onde os filtros não são gaveta nenhuma. */
+button.filtros-fechar {
+  display: none; background: var(--fundo); color: var(--texto);
+  border: 1px solid var(--borda);
+}
+button.filtros-fechar:hover { background: var(--azul-fraco) }
+button.ver-resultado { display: none }
+
+/* ------------------------------- filtros como gaveta em tela estreita */
+/* No computador os filtros ficam à vista, numa coluna. Abaixo de 1080px
+   não há largura para isso sem espremer a lista, então eles viram uma
+   gaveta que desliza — e o botão que a abre mostra quantos filtros estão
+   ligados, para ninguém estranhar uma lista curta sem saber por quê. */
+@media (max-width: 1080px) {
+  .corpo { grid-template-columns: minmax(0, 1fr) }
+  .filtros {
+    position: fixed; inset: 0 auto 0 0; z-index: 920;
+    width: min(332px, 87vw); max-height: none; border-radius: 0;
+    border-width: 0 1px 0 0; box-shadow: var(--sombra-alta);
+    padding: calc(14px + env(safe-area-inset-top, 0px)) 14px
+             calc(22px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-100%); visibility: hidden;
+    transition: transform .22s ease, visibility .22s;
+  }
+  body.filtros-abertos .filtros { transform: none; visibility: visible }
+  button.filtros-fechar { display: grid }
+  button.ver-resultado { display: inline-flex; justify-content: center;
+    position: sticky; bottom: 0; margin-top: 2px }
+  .sombra-filtros {
+    position: fixed; inset: 0; z-index: 919;
+    background: rgba(12, 39, 66, .45); backdrop-filter: blur(2px);
+  }
+}
+@media (min-width: 1081px) { .abrir-filtros, .sombra-filtros { display: none } }
+.abrir-filtros .conta-filtros {
+  background: var(--azul); color: #fff; border-radius: 99px; font-size: 11px;
+  font-weight: 700; min-width: 17px; height: 17px; padding: 0 4px;
+  display: inline-grid; place-items: center;
+}
+.filtros h2 {
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: .09em;
+  color: var(--fraco); font-weight: 700; display: flex; align-items: center;
+  gap: 6px;
+}
+.campo { display: grid; gap: 4px; min-width: 0 }
+.campo > label { font-size: 11.5px; font-weight: 500; color: var(--fraco) }
+/* A linha sob o seletor de estado. Diz quantos imóveis o estado tem e,
+   quando for o caso, que ali não há lista de região metropolitana
+   conferida — é um aviso de limite, não enfeite, então não fica escondido
+   num title que só aparece no mouse. */
+.dica { margin: 0; font-size: 11px; line-height: 1.35; color: var(--fraco) }
+.dica:empty { display: none }
+select, input[type="search"], input[type="number"] {
+  width: 100%; padding: 7px 9px; border: 1px solid var(--borda);
+  border-radius: 7px; background: var(--fundo); min-width: 0;
+}
+.faixa { display: grid; grid-template-columns: 1fr auto 1fr; gap: 5px;
+  align-items: center }
+.faixa span { color: var(--fraco); font-size: 12px }
+.chips { display: flex; flex-wrap: wrap; gap: 5px }
+.chip {
+  cursor: pointer; padding: 5px 10px; border-radius: 99px; font-size: 12px;
+  border: 1px solid var(--borda); background: var(--fundo); font-weight: 500;
+}
+.chip[aria-pressed="true"] { background: var(--azul); border-color: var(--azul);
+  color: #fff }
+.limpar {
+  background: none; border: none; color: var(--azul); cursor: pointer;
+  padding: 0; font-size: 12.5px; text-align: left; text-decoration: underline;
+}
+
+/* ----------------------------------------------------------------- abas */
+.painel-direito { display: grid; gap: 10px; min-width: 0 }
+.barra {
+  display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+  background: var(--painel); border: 1px solid var(--borda);
+  border-radius: 11px; padding: 8px 12px; box-shadow: var(--sombra);
+}
+.abas { display: flex; gap: 4px; background: var(--fundo); padding: 3px;
+  border-radius: 9px }
+.aba {
+  cursor: pointer; border: none; background: none; padding: 6px 13px;
+  border-radius: 7px; font-size: 13px; font-weight: 600; color: var(--fraco);
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.aba[aria-selected="true"] { background: var(--painel); color: var(--azul);
+  box-shadow: var(--sombra) }
+.barra .contagem { font-size: 13px; color: var(--fraco) }
+.barra .contagem strong { color: var(--texto) }
+.barra .campo { margin-left: auto; grid-auto-flow: column; align-items: center;
+  gap: 6px }
+
+/* ------------------------------------------------------------ resultados */
+.lista { display: grid; gap: 9px; min-width: 0 }
+.item {
+  display: grid; grid-template-columns: 4px minmax(0, 1fr) auto;
+  background: var(--painel); border: 1px solid var(--borda);
+  border-radius: 10px; overflow: hidden; box-shadow: var(--sombra);
+}
+.item:hover { border-color: var(--azul) }
+.faixa-cor { background: var(--borda-forte) }
+.item[data-cor="positivo"] .faixa-cor { background: var(--bom) }
+.item[data-cor="neutro"] .faixa-cor { background: var(--azul) }
+.item[data-cor="atencao"] .faixa-cor { background: var(--atencao) }
+.item[data-cor="bloqueio"] .faixa-cor { background: var(--veto) }
+
+.item-meio { padding: 11px 13px; min-width: 0; display: grid; gap: 6px }
+.item-titulo { display: flex; flex-wrap: wrap; align-items: baseline; gap: 7px }
+.item-titulo h3 { font-size: 15px; font-weight: 600 }
+.item-titulo .local { color: var(--fraco); font-size: 12.5px;
+  display: inline-flex; align-items: center; gap: 4px }
+.especificacoes {
+  display: flex; flex-wrap: wrap; gap: 2px 13px; font-size: 12.5px;
+  color: var(--fraco); font-family: var(--mono);
+  font-variant-numeric: tabular-nums;
+}
+.especificacoes span { display: inline-flex; align-items: center; gap: 4px }
+.veredito { font-size: 13px; margin: 0 }
+.etiquetas { display: flex; flex-wrap: wrap; gap: 4px }
+.etiqueta {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .05em; padding: 2px 7px; border-radius: 4px;
+  background: var(--fundo); color: var(--fraco);
+  display: inline-flex; align-items: center; gap: 4px;
+}
+.etiqueta.bom { background: var(--bom-fundo); color: var(--bom) }
+.etiqueta.atencao { background: var(--atencao-fundo); color: var(--atencao) }
+.etiqueta.veto { background: var(--veto-fundo); color: var(--veto) }
+.etiqueta.novo { background: var(--novo-fundo); color: var(--novo) }
+
+.item-dinheiro {
+  padding: 11px 13px; border-left: 1px solid var(--borda);
+  background: var(--fundo); display: grid; gap: 7px; align-content: start;
+  min-width: 182px; text-align: right;
+}
+@media (max-width: 640px) {
+  .item { grid-template-columns: 4px minmax(0, 1fr) }
+  .item-dinheiro { grid-column: 2; border-left: none;
+    border-top: 1px solid var(--borda); text-align: left; min-width: 0 }
+}
+.preco { font-family: var(--mono); font-size: 18px; font-weight: 600;
+  font-variant-numeric: tabular-nums; letter-spacing: -.025em }
+.preco small { display: block; font-size: 10.5px; font-weight: 400;
+  color: var(--fraco); font-family: var(--sans); letter-spacing: 0 }
+.descontos { display: grid; gap: 1px; font-size: 12px }
+.descontos div { display: flex; justify-content: space-between; gap: 10px }
+@media (max-width: 640px) { .descontos div { justify-content: flex-start } }
+.descontos span { color: var(--fraco) }
+.descontos b { font-family: var(--mono); font-variant-numeric: tabular-nums }
+.descontos .real b { color: var(--bom); font-size: 14px; font-weight: 700 }
+.item[data-cor="bloqueio"] .descontos .real b { color: var(--veto) }
+.item-acoes { display: flex; gap: 5px; justify-content: flex-end;
+  flex-wrap: wrap }
+
+/* ----------------------------------------------------------- favoritos */
+/* Estrela vazia por padrão, cheia e âmbar quando guardado. A cor é a
+   mesma do aviso de ocupação de propósito: âmbar aqui não quer dizer
+   perigo, quer dizer "você marcou isto". */
+.botao.favorito { padding-left: 9px; padding-right: 9px }
+.botao.favorito svg.i { width: 15px; height: 15px }
+.botao.favorito[aria-pressed="true"] {
+  color: var(--atencao); border-color: var(--atencao);
+  background: var(--atencao-fundo);
+}
+.botao.favorito.largo { padding-left: 13px; padding-right: 13px }
+.item[data-fav-on="true"] { border-color: var(--atencao) }
+.acoes-gaveta { display: grid; gap: 7px }
+@media (min-width: 420px) {
+  .acoes-gaveta { grid-template-columns: auto minmax(0, 1fr) }
+}
+@media (max-width: 640px) { .item-acoes { justify-content: flex-start } }
+
+.vazio, .carregando {
+  padding: 36px 20px; text-align: center; color: var(--fraco);
+  background: var(--painel); border: 1px dashed var(--borda-forte);
+  border-radius: 11px;
+}
+.vazio strong { display: block; color: var(--texto); margin-bottom: 4px;
+  font-size: 15px }
+.erro { border-color: var(--veto); color: var(--veto) }
+.mais { justify-self: center }
+
+/* ------------------------------------------------------------- comparar */
+.comparar-caixa {
+  background: var(--painel); border: 1px solid var(--borda);
+  border-radius: 11px; box-shadow: var(--sombra); overflow: hidden;
+}
+.comparar-cabeca {
+  display: flex; flex-wrap: wrap; gap: 9px; align-items: center;
+  padding: 11px 14px; border-bottom: 1px solid var(--borda);
+}
+.comparar-cabeca h2 { font-size: 14.5px; font-weight: 600;
+  display: flex; align-items: center; gap: 7px }
+.comparar-cabeca .slots { font-family: var(--mono); font-size: 12px;
+  color: var(--fraco) }
+.comparar-cabeca .botao { margin-left: auto }
+.rolagem { overflow-x: auto }
+table.cmp { width: 100%; border-collapse: collapse;
+  font-variant-numeric: tabular-nums }
+table.cmp th, table.cmp td {
+  padding: 8px 13px; text-align: right; border-bottom: 1px solid var(--borda);
+  white-space: nowrap;
+}
+table.cmp th:first-child, table.cmp td:first-child {
+  text-align: left; position: sticky; left: 0; background: var(--painel);
+  color: var(--fraco); font-weight: 500; font-size: 12.5px;
+  white-space: normal; min-width: 164px;
+}
+table.cmp thead th {
+  vertical-align: bottom; border-bottom: 2px solid var(--borda-forte);
+  font-size: 13px; font-weight: 600; white-space: normal; min-width: 156px;
+}
+table.cmp thead th .cid { display: block; font-size: 11px; font-weight: 400;
+  color: var(--fraco); margin-bottom: 2px }
+table.cmp thead th .tirar { display: block; margin: 4px 0 0 auto;
+  background: none; border: none; color: var(--veto); cursor: pointer;
+  font-size: 11.5px; padding: 0; text-decoration: underline }
+table.cmp td { font-family: var(--mono); font-size: 12.5px }
+table.cmp tr.marco td, table.cmp tr.marco th:first-child {
+  background: var(--azul-fraco); font-weight: 700 }
+table.cmp td.vence { color: var(--bom); font-weight: 700 }
+table.cmp td.perde { color: var(--fraco) }
+table.cmp tr.txt td { white-space: normal; font-family: var(--sans);
+  font-size: 12px; color: var(--fraco); min-width: 190px }
+
+/* --------------------------------------------------------------- gaveta */
+.sombra-gaveta {
+  position: fixed; inset: 0; background: rgba(12, 39, 66, .45);
+  z-index: 900; backdrop-filter: blur(2px);
+}
+.gaveta {
+  position: fixed; top: 0; right: 0; bottom: 0; width: min(520px, 100%);
+  background: var(--painel); z-index: 901; box-shadow: var(--sombra-alta);
+  display: flex; flex-direction: column; overflow: hidden;
+}
+.gaveta-topo {
+  padding: 14px 18px; background: linear-gradient(135deg, var(--marinho),
+    var(--marinho-claro)); color: #eaf2fb; display: grid; gap: 7px;
+}
+.gaveta-topo .linha { display: flex; align-items: flex-start; gap: 10px }
+.gaveta-topo h2 { font-size: 19px; font-weight: 700; letter-spacing: -.015em;
+  color: #fff; min-width: 0 }
+.gaveta-topo .end { font-size: 12.5px; color: #a8c6e4; margin: 2px 0 0;
+  display: flex; gap: 6px; align-items: flex-start }
+.fechar {
+  margin-left: auto; background: rgba(255,255,255,.12); border: none;
+  color: #eaf2fb; width: 30px; height: 30px; border-radius: 8px;
+  cursor: pointer; display: grid; place-items: center; flex: none;
+}
+.fechar:hover { background: rgba(255,255,255,.22) }
+.gaveta-corpo { overflow-y: auto; padding: 16px 18px 28px; display: grid;
+  gap: 16px }
+.bloco { display: grid; gap: 7px }
+.bloco h3 {
+  font-size: 10.5px; text-transform: uppercase; letter-spacing: .09em;
+  color: var(--fraco); font-weight: 700; display: flex; align-items: center;
+  gap: 6px; padding-bottom: 5px; border-bottom: 1px solid var(--borda);
+}
+.pares { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px,1fr));
+  gap: 9px }
+.par { background: var(--fundo); border: 1px solid var(--borda);
+  border-radius: 8px; padding: 8px 10px; min-width: 0 }
+.par dt { font-size: 10.5px; color: var(--fraco); text-transform: uppercase;
+  letter-spacing: .06em; font-weight: 600 }
+.par dd { margin: 2px 0 0; font-family: var(--mono); font-size: 14px;
+  font-weight: 600; font-variant-numeric: tabular-nums }
+.par dd small { font-family: var(--sans); font-size: 11px; font-weight: 400;
+  color: var(--fraco); display: block }
+.conta { display: grid; gap: 1px; background: var(--borda);
+  border: 1px solid var(--borda); border-radius: 8px; overflow: hidden }
+.conta div { background: var(--painel); display: flex;
+  justify-content: space-between; gap: 12px; padding: 7px 11px; font-size: 13px }
+.conta span { color: var(--fraco) }
+.conta b { font-family: var(--mono); font-variant-numeric: tabular-nums;
+  font-weight: 600 }
+.conta .soma { background: var(--azul-fraco) }
+.conta .soma b { font-size: 14.5px }
+.conta .real b { color: var(--bom); font-size: 15px; font-weight: 700 }
+.gaveta[data-cor="bloqueio"] .conta .real b { color: var(--veto) }
+.parecer-caixa {
+  font-size: 14px; line-height: 1.55; padding: 11px 13px;
+  background: var(--azul-fraco); border-left: 3px solid var(--azul);
+  border-radius: 0 8px 8px 0; margin: 0;
+}
+.gaveta[data-cor="bloqueio"] .parecer-caixa { background: var(--veto-fundo);
+  border-left-color: var(--veto) }
+.ressalvas { margin: 0; padding: 0; list-style: none; display: grid; gap: 7px }
+.ressalvas li { font-size: 13px; color: var(--fraco); padding-left: 22px;
+  position: relative; line-height: 1.45 }
+.ressalvas li svg.i { position: absolute; left: 0; top: 2px;
+  color: var(--atencao) }
+.ressalvas li.grave { color: var(--veto); font-weight: 500 }
+.ressalvas li.grave svg.i { color: var(--veto) }
+.links-externos { display: grid; gap: 7px }
+.links-externos .botao { justify-content: flex-start }
+.nota-caixa { margin: 0; font-size: 12.5px; color: var(--fraco);
+  line-height: 1.45 }
+
+/* ------------------------------------------------------------- rodapé */
+.rodape {
+  max-width: 1560px; margin: 0 auto; padding: 22px 20px 40px;
+  border-top: 1px solid var(--borda); display: grid; gap: 18px;
+}
+.rodape h2 { font-size: 11px; text-transform: uppercase; letter-spacing: .09em;
+  color: var(--fraco); font-weight: 700; display: flex; align-items: center;
+  gap: 7px }
+.premissas { display: grid; gap: 9px; margin-top: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(262px, 1fr)) }
+.premissa { background: var(--painel); border: 1px solid var(--borda);
+  border-radius: 10px; padding: 11px 13px; font-size: 12.5px;
+  box-shadow: var(--sombra) }
+.premissa b { display: block; font-weight: 600 }
+.premissa code { font-family: var(--mono); color: var(--azul); font-size: 11.5px }
+.premissa p { margin: 4px 0 0; color: var(--fraco) }
+.riscos { display: grid; gap: 10px; margin-top: 8px;
+  grid-template-columns: repeat(auto-fit, minmax(262px, 1fr)) }
+.risco { font-size: 12.5px; border-left: 3px solid var(--veto);
+  padding-left: 11px }
+.risco b { display: block; color: var(--veto); font-size: 11px;
+  text-transform: uppercase; letter-spacing: .06em }
+.risco p { margin: 2px 0 0; color: var(--fraco) }
+.isencao { font-size: 12.5px; color: var(--fraco); background: var(--painel);
+  border: 1px solid var(--borda); border-radius: 10px; padding: 14px;
+  box-shadow: var(--sombra) }
+.isencao b { color: var(--texto) }
+
+/* ===================================================================
+   DEDO EM VEZ DE MOUSE
+   (pointer: coarse) pergunta ao aparelho como ele é apontado, não quanto
+   mede. É a detecção certa: um tablet de 1024px com dedo precisa de alvo
+   grande, e um notebook de 1024px com mouse não. Alvo de 44px é a
+   recomendação das diretrizes de acessibilidade.
+   O font-size: 16px nos campos não é estética: no iPhone, campo com
+   fonte menor que 16px faz o Safari dar zoom sozinho ao receber o toque,
+   e a página fica torta.
+   =================================================================== */
+@media (pointer: coarse) {
+  .botao { padding: 10px 14px; min-height: 44px }
+  .botao-pequeno { padding: 9px 12px; font-size: 13px; min-height: 42px }
+  .chip { padding: 9px 14px; font-size: 13px; min-height: 40px }
+  .aba { padding: 10px 14px; min-height: 42px }
+  .limpar { padding: 6px 0; min-height: 34px }
+  select, input[type="search"], input[type="number"] {
+    padding: 10px 11px; min-height: 44px; font-size: 16px;
+  }
+  .fechar { width: 40px; height: 40px }
+  table.cmp thead th .tirar { padding: 6px 0; min-height: 32px }
+}
+
+/* ============================ TABLET ============================== */
+@media (max-width: 1080px) {
+  .corpo { padding: 12px 16px 22px }
+  .numeros { padding: 12px 16px 0 }
+  .rodape { padding: 20px 16px 36px }
+  .filtros { gap: 14px }
+}
+
+/* ============================ TELEFONE ============================ */
+@media (max-width: 680px) {
+  /* duas colunas de indicador cabem em 360px e nada fica escondido */
+  .numeros { grid-template-columns: 1fr 1fr; gap: 8px; padding: 11px 14px 0 }
+  .numero { padding: 8px 10px; border-radius: 9px }
+  .numero dt { font-size: 9.5px; letter-spacing: .05em }
+  .numero dd { font-size: 18px }
+  .numero small { font-size: 10px }
+  .corpo { padding: 11px 14px 22px; gap: 12px }
+  .rodape { padding: 18px 14px 34px; gap: 14px }
+  .barra { padding: 7px 9px; gap: 8px }
+  .barra .campo { margin-left: 0; width: 100% }
+  .barra .campo > label { white-space: nowrap }
+  .barra .contagem { font-size: 12.5px }
+  .item-meio { padding: 10px 11px }
+  .item-titulo h3 { font-size: 14.5px }
+  .premissas, .riscos { grid-template-columns: 1fr }
+}
+
+@media (max-width: 560px) {
+  .gaveta { width: 100% }
+  .gaveta-topo {
+    padding: calc(13px + env(safe-area-inset-top, 0px)) 15px 13px;
+  }
+  .gaveta-topo h2 { font-size: 17px }
+  .gaveta-corpo {
+    padding: 14px 15px calc(28px + env(safe-area-inset-bottom, 0px));
+  }
+  .pares { grid-template-columns: 1fr 1fr }
+  .conta div { font-size: 12.5px; padding: 7px 9px }
+  .comparar-cabeca { padding: 10px 11px }
+  .comparar-cabeca .botao { margin-left: 0 }
+}
+
+/* ================= tarja de progresso da pesquisa ================= */
+.tarja {
+  display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center;
+  max-width: 1560px; margin: 12px auto 0; padding: 10px 14px;
+  background: var(--painel); border: 1px solid var(--azul);
+  border-left: 3px solid var(--azul); border-radius: 10px;
+  box-shadow: var(--sombra); font-size: 13px;
+}
+@media (min-width: 681px) { .tarja { margin: 14px auto 0; padding: 11px 16px } }
+.tarja[data-estado="erro"] { border-color: var(--veto) }
+.tarja[data-estado="pronto"] { border-color: var(--bom) }
+.tarja b { font-weight: 600 }
+.tarja .passo { color: var(--fraco) }
+.tarja .cronometro {
+  font-family: var(--mono); font-variant-numeric: tabular-nums;
+  color: var(--fraco); margin-left: auto;
+}
+@media (max-width: 680px) { .tarja .cronometro { margin-left: 0 } }
+.tarja a { font-weight: 500 }
+.girando { animation: girar 1.1s linear infinite; transform-origin: 50% 50% }
+@keyframes girar { to { transform: rotate(360deg) } }
+.tarja[data-estado="erro"] .girando,
+.tarja[data-estado="pronto"] .girando { animation: none }
+
+/* ====================== ocupação e desocupação ==================== */
+.selo-ocupacao {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+  padding: 10px 12px; border-radius: 9px; font-size: 13.5px;
+  background: var(--fundo); border: 1px solid var(--borda);
+}
+.selo-ocupacao[data-s="ocupado"] { background: var(--atencao-fundo);
+  border-color: var(--atencao); color: var(--atencao) }
+.selo-ocupacao[data-s="desocupado"] { background: var(--bom-fundo);
+  border-color: var(--bom); color: var(--bom) }
+.selo-ocupacao b { font-weight: 700 }
+.selo-ocupacao .de-onde { color: var(--fraco); font-size: 11.5px;
+  width: 100%; font-weight: 400 }
+.selo-ocupacao .de-onde q { font-style: italic }
+.roteiro { display: grid; gap: 11px }
+.roteiro > p { margin: 0; font-size: 13px; color: var(--fraco) }
+.etapa { border-left: 2px solid var(--borda-forte); padding-left: 11px }
+.etapa b { display: block; font-size: 12.5px; font-weight: 700;
+  margin-bottom: 4px }
+.etapa ul { margin: 0; padding-left: 17px; display: grid; gap: 5px }
+.etapa li { font-size: 12.5px; color: var(--fraco); line-height: 1.45 }
+.juridico {
+  margin: 0; font-size: 11.5px; color: var(--fraco); line-height: 1.45;
+  background: var(--fundo); border: 1px dashed var(--borda-forte);
+  border-radius: 8px; padding: 9px 11px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important }
+}
+</style>
+
+<svg hidden aria-hidden="true">
+  <defs>
+    <symbol id="ic-casa" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9.5 21v-6h5v6"/></symbol>
+    <symbol id="ic-lista" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3.5 6h.01M3.5 12h.01M3.5 18h.01"/></symbol>
+    <symbol id="ic-comparar" viewBox="0 0 24 24"><path d="M12 3v18"/><path d="M5 8 2 14h6L5 8zM19 8l-3 6h6l-3-6z"/><path d="M8 5h-3M19 5h-3"/></symbol>
+    <symbol id="ic-filtro" viewBox="0 0 24 24"><path d="M3 5h18l-7 8v6l-4 2v-8L3 5z"/></symbol>
+    <symbol id="ic-relogio" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="ic-busca" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4.3-4.3"/></symbol>
+    <symbol id="ic-alerta" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17h.01"/></symbol>
+    <symbol id="ic-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></symbol>
+    <symbol id="ic-fora" viewBox="0 0 24 24"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M18 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6"/></symbol>
+    <symbol id="ic-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="ic-regua" viewBox="0 0 24 24"><path d="M3 9h18v6H3z"/><path d="M7 9v3M11 9v3M15 9v3M19 9v3"/></symbol>
+    <symbol id="ic-cama" viewBox="0 0 24 24"><path d="M3 18V7M3 12h18v6M21 18v-4"/><circle cx="7.5" cy="10" r="1.8"/></symbol>
+    <symbol id="ic-carro" viewBox="0 0 24 24"><path d="M5 17h14M4 17v-4l2-5h12l2 5v4"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/></symbol>
+    <symbol id="ic-dinheiro" viewBox="0 0 24 24"><rect x="2.5" y="6" width="19" height="12" rx="2"/><circle cx="12" cy="12" r="2.6"/></symbol>
+    <symbol id="ic-doc" viewBox="0 0 24 24"><path d="M14 3H7a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V7l-4-4z"/><path d="M14 3v4h4M9 13h6M9 17h6"/></symbol>
+    <symbol id="ic-rss" viewBox="0 0 24 24"><path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1.5"/></symbol>
+    <symbol id="ic-tema" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="ic-estrela" viewBox="0 0 24 24"><path d="m12 3.6 2.6 5.3 5.9.9-4.3 4.2 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.8l5.9-.9L12 3.6z"/></symbol>
+    <symbol id="ic-estrela-cheia" viewBox="0 0 24 24"><path fill="currentColor" stroke-width="1.2" d="m12 3.6 2.6 5.3 5.9.9-4.3 4.2 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.8l5.9-.9L12 3.6z"/></symbol>
+    <symbol id="ic-atualizar" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></symbol>
+  </defs>
+</svg>
+
+<header class="topo">
+  <div class="topo-linha">
+    <div class="marca">
+      <span class="brasao"><svg class="i"><use href="#ic-casa"/></svg></span>
+      <div class="marca-texto">
+        <h1>Radar Imóveis Brasil</h1>
+        <p>Acervo Caixa · 27 estados · análise independente</p>
+      </div>
+    </div>
+    <div class="topo-acoes">
+      <a class="botao botao-claro" id="rss" href="dados/feed.xml"
+         title="Assinar o RSS dos destaques novos" aria-label="Assinar o RSS">
+        <svg class="i"><use href="#ic-rss"/></svg>
+        <span class="so-largura">RSS</span></a>
+      <button class="botao botao-claro" id="tema" type="button"
+              title="Alternar entre claro e escuro" aria-label="Alternar tema">
+        <svg class="i"><use href="#ic-tema"/></svg>
+        <span class="so-largura">Tema</span></button>
+    </div>
+  </div>
+  <p class="aviso-atualizacao" id="atualizacao"></p>
+</header>
+
+<!-- Tarja de progresso. Fica escondida até a página perceber que existe
+     uma execução acontecendo no GitHub — seja a automática das 06:10,
+     seja uma que você disparou lá pelo "Run workflow". -->
+<p class="tarja" id="tarja" hidden></p>
+
+<dl class="numeros" id="numeros"></dl>
+
+<div class="corpo">
+  <aside class="filtros" id="filtros" aria-label="Filtros">
+    <div class="filtros-cabeca">
+      <h2><svg class="i"><use href="#ic-filtro"/></svg> Filtros</h2>
+      <button class="fechar filtros-fechar" type="button" id="fechar-filtros"
+              aria-label="Fechar os filtros">
+        <svg class="i"><use href="#ic-x"/></svg></button>
+    </div>
+    <div class="campo">
+      <label for="busca">Buscar</label>
+      <input type="search" id="busca" placeholder="bairro, endereço, cidade">
+    </div>
+    <!-- O ESTADO É O PRIMEIRO FILTRO E É DIFERENTE DE TODOS OS OUTROS:
+         trocar de estado baixa outro arquivo. Os 18.266 imóveis do país
+         não caberiam numa página só (o Rio de Janeiro sozinho tem 5.995),
+         então o navegador carrega um estado por vez. -->
+    <div class="campo">
+      <label for="uf">Estado</label><select id="uf"></select>
+      <p class="dica" id="dica-uf"></p>
+    </div>
+    <div class="campo">
+      <label for="cidade">Cidade</label><select id="cidade"></select>
+    </div>
+    <div class="campo">
+      <label for="bairro">Bairro</label><select id="bairro"></select>
+    </div>
+    <div class="campo">
+      <label for="tipo">Tipo</label><select id="tipo"></select>
+    </div>
+    <div class="campo">
+      <label>Preço (R$)</label>
+      <div class="faixa">
+        <input type="number" id="pmin" placeholder="mín" min="0" step="10000">
+        <span>a</span>
+        <input type="number" id="pmax" placeholder="máx" min="0" step="10000">
+      </div>
+    </div>
+    <div class="campo">
+      <label>Área privativa (m²)</label>
+      <div class="faixa">
+        <input type="number" id="amin" placeholder="mín" min="0" step="10">
+        <span>a</span>
+        <input type="number" id="amax" placeholder="máx" min="0" step="10">
+      </div>
+    </div>
+    <div class="campo">
+      <label for="quartos">Quartos (mínimo)</label>
+      <select id="quartos">
+        <option value="">Qualquer</option>
+        <option value="1">1+</option><option value="2">2+</option>
+        <option value="3">3+</option><option value="4">4+</option>
+      </select>
+    </div>
+    <div class="campo">
+      <label>Mostrar</label>
+      <div class="chips" id="chips">
+        <button class="chip" type="button" data-f="destaques" aria-pressed="false">Destaques</button>
+        <button class="chip" type="button" data-f="novos" aria-pressed="false">Novos</button>
+        <button class="chip" type="button" data-f="favoritos" aria-pressed="false">Favoritos</button>
+        <button class="chip" type="button" data-f="liquido" aria-pressed="false"
+                title="Capital ou região metropolitana: onde há comprador na revenda">Capital/RM</button>
+        <button class="chip" type="button" data-f="financiavel" aria-pressed="false">Financiável</button>
+        <button class="chip" type="button" data-f="comvaga" aria-pressed="false">Com vaga</button>
+        <button class="chip" type="button" data-f="sem_veto" aria-pressed="true">Sem vetados</button>
+        <button class="chip" type="button" data-f="sem_lote" aria-pressed="false">Sem lotes</button>
+      </div>
+    </div>
+    <button class="limpar" id="limpar" type="button">Limpar filtros</button>
+    <!-- Só aparece quando os filtros estão em gaveta. Com a gaveta aberta
+         num telefone sobram uns 50px de fundo escuro para tocar, o que é
+         alvo pequeno demais para ser a única saída. -->
+    <button class="botao botao-forte ver-resultado" type="button"
+            id="ver-resultado"></button>
+  </aside>
+
+  <main class="painel-direito">
+    <div class="barra">
+      <button class="botao botao-pequeno abrir-filtros" type="button"
+              id="abrir-filtros" aria-expanded="false" aria-controls="filtros">
+        <svg class="i"><use href="#ic-filtro"/></svg> Filtros
+        <span class="conta-filtros" id="conta-filtros" hidden></span></button>
+      <div class="abas" role="tablist">
+        <button class="aba" type="button" role="tab" data-aba="lista"
+                aria-selected="true">
+          <svg class="i"><use href="#ic-lista"/></svg> Lista</button>
+        <button class="aba" type="button" role="tab" data-aba="comparar"
+                aria-selected="false">
+          <svg class="i"><use href="#ic-comparar"/></svg>
+          Comparar <span id="n-comparar"></span></button>
+      </div>
+      <span class="contagem" id="contagem">Carregando…</span>
+      <div class="campo">
+        <label for="ordem">Ordenar</label>
+        <select id="ordem">
+          <option value="nota">Melhor nota</option>
+          <option value="desconto">Maior desconto real</option>
+          <option value="desconto_menor">Menor desconto real</option>
+          <option value="preco">Menor preço</option>
+          <option value="preco_maior">Maior preço</option>
+          <option value="m2">Menor R$/m²</option>
+          <option value="m2_maior">Maior R$/m²</option>
+          <option value="area">Maior área</option>
+          <option value="area_menor">Menor área</option>
+        </select>
+      </div>
+    </div>
+
+    <section id="painel-lista">
+      <div class="lista" id="lista">
+        <p class="carregando">Carregando os imóveis…</p>
+      </div>
+      <button class="botao mais" id="mais" type="button" hidden>Mostrar mais</button>
+    </section>
+
+    <section id="painel-comparar" hidden>
+      <div class="comparar-caixa">
+        <div class="comparar-cabeca">
+          <h2><svg class="i"><use href="#ic-comparar"/></svg> Comparação</h2>
+          <span class="slots" id="slots">0 de 3</span>
+          <button class="botao botao-pequeno" id="limpar-cmp" type="button"
+                  disabled>Limpar</button>
+        </div>
+        <div id="cmp-corpo"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="rodape">
+  <section>
+    <h2><svg class="i"><use href="#ic-dinheiro"/></svg> Premissas da conta</h2>
+    <div class="premissas" id="premissas"></div>
+  </section>
+  <section>
+    <h2><svg class="i"><use href="#ic-alerta"/></svg>
+      Riscos que não aparecem em coluna de preço</h2>
+    <div class="riscos" id="riscos"></div>
+  </section>
+  <p class="isencao">
+    <b>Projeto independente, sem vínculo oficial com a CAIXA.</b>
+    Os dados vêm da lista pública de imóveis da Caixa Econômica Federal. O
+    parecer, a nota e os cálculos de custo são deste projeto, não da Caixa.
+    Confirme disponibilidade, condições, edital, ocupação e débitos nos canais
+    oficiais antes de qualquer decisão. Isto não é recomendação de
+    investimento.
+  </p>
+</footer>
+
+<script>
+// O gerador de prévia troca a linha abaixo por um recorte dos dados reais.
+const DADOS_EMBUTIDOS = null;
+
+/* O endereço da página de cada imóvel é sempre o mesmo prefixo + o número.
+   Guardar a URL inteira nos 18.266 registros custaria 1,5 MB para repetir
+   87 caracteres idênticos, então ela é montada aqui. */
+const PAGINA_CAIXA =
+  "https://venda-imoveis.caixa.gov.br/sistema/detalhe-imovel.asp?hdnimovel=";
+
+const POR_PAGINA = 20;
+const MAX_CMP = 3;
+
+/* Descobre "usuario/repositorio" sozinho, em três tentativas. Serve só
+   para PERGUNTAR ao GitHub como vai a execução — leitura pura, sem
+   credencial nenhuma:
+   1. o que o gerador gravou no resumo.json (vem do GitHub Actions);
+   2. o endereço do próprio site, quando servido pelo GitHub Pages;
+   3. o valor abaixo, se você quiser fixar na unha.           */
+const REPO_FIXO = "";
+
+function descobrirRepo() {
+  if (INDICE.repo) return INDICE.repo;
+  const h = location.hostname, partes = location.pathname.split("/");
+  if (h.endsWith(".github.io")) {
+    const dono = h.replace(".github.io", "");
+    // usuario.github.io/projeto/  ->  usuario/projeto
+    // usuario.github.io/          ->  usuario/usuario.github.io
+    return partes[1] ? `${dono}/${partes[1]}` : `${dono}/${h}`;
+  }
+  return REPO_FIXO;
+}
+
+
+const moeda = n => n == null ? "—" : n.toLocaleString("pt-BR",
+  { style: "currency", currency: "BRL", maximumFractionDigits: 0 });
+const pct = n => n == null ? "—" :
+  (n * 100).toLocaleString("pt-BR", { maximumFractionDigits: 0 }) + "%";
+const num = (n, d = 0) => n == null ? "—" : n.toLocaleString("pt-BR",
+  { minimumFractionDigits: d, maximumFractionDigits: d });
+const m2 = n => n ? num(n, 0) + " m²" : "—";
+const dataHora = iso => {
+  if (!iso) return "—";
+  const d = new Date(iso);
+  return d.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" }) +
+    " às " + d.toLocaleTimeString("pt-BR",
+      { hour: "2-digit", minute: "2-digit" });
+};
+const icone = n => `<svg class="i"><use href="#ic-${n}"/></svg>`;
+const escapar = t => String(t ?? "").replace(/[&<>"]/g,
+  c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+/* INDICE  = o resumo do país e a lista das 27 UFs (dados/indice.json)
+   RESUMO  = o resumo do estado que está na tela (vem dentro do arquivo da UF)
+   TUDO    = os imóveis desse estado, já descompactados */
+let TUDO = [], RESUMO = {}, INDICE = {}, TEXTOS = [], pagina = 1, aba = "lista";
+let escolhidos = [];
+const CACHE_UF = new Map();   // estado já baixado não se baixa de novo
+const filtros = { busca: "", cidade: "", bairro: "", tipo: "", pmin: null,
+  pmax: null, amin: null, amax: null, quartos: "", destaques: false,
+  novos: false, liquido: false, financiavel: false, comvaga: false,
+  favoritos: false, sem_veto: true, sem_lote: false, ordem: "nota" };
+const $ = s => document.querySelector(s);
+
+/* O estado escolhido NÃO entra em 'filtros' porque não é um filtro: é o
+   arquivo que está carregado. Limpar filtros não troca de estado. */
+let UF_ATUAL = "";
+const CHAVE_UF = "radar-br:uf";
+const UF_PADRAO = "PE";
+
+/* ==================================================================
+   FAVORITOS
+   Ficam no navegador de quem marcou, em localStorage. Não vão para o
+   repositório nem para lugar nenhum: são SEUS, deste aparelho e deste
+   navegador. Marcar no computador não aparece no celular.
+   Guardar no servidor exigiria conta, login e um banco — e este
+   projeto é um site estático de propósito.
+   ================================================================== */
+const CHAVE_FAVORITOS = "radar-br:favoritos";
+// quem usou a versão de Pernambuco tem favoritos guardados na chave antiga;
+// eles são adotados uma vez, na primeira visita, em vez de sumirem
+const CHAVE_FAVORITOS_ANTIGA = "radar-pe:favoritos";
+let FAVORITOS = new Set();
+
+function lerFavoritos() {
+  try {
+    const bruto = localStorage.getItem(CHAVE_FAVORITOS)
+      || localStorage.getItem(CHAVE_FAVORITOS_ANTIGA);
+    FAVORITOS = new Set(bruto ? JSON.parse(bruto) : []);
+  } catch (_) {
+    // janela anônima, armazenamento bloqueado, JSON corrompido: segue
+    // com a lista vazia em vez de quebrar a página inteira
+    FAVORITOS = new Set();
+  }
+}
+
+function gravarFavoritos() {
+  try {
+    localStorage.setItem(CHAVE_FAVORITOS, JSON.stringify([...FAVORITOS]));
+  } catch (_) { /* sem espaço ou bloqueado: a marcação vale só esta visita */ }
+}
+
+function alternarFavorito(id) {
+  FAVORITOS.has(id) ? FAVORITOS.delete(id) : FAVORITOS.add(id);
+  gravarFavoritos();
+  desenhar();
+  // se a gaveta estiver aberta neste imóvel, redesenha para o botão
+  // de dentro acompanhar o de fora
+  const g = document.querySelector(".gaveta");
+  if (g && g.dataset.id === id) { fecharDetalhe(); abrirDetalhe(id) }
+}
+
+const botaoFavorito = (id, grande) => {
+  const marcado = FAVORITOS.has(id);
+  return `<button class="botao botao-pequeno favorito${grande ? " largo" : ""}"
+    type="button" data-fav="${escapar(id)}" aria-pressed="${marcado}"
+    title="${marcado ? "Tirar dos favoritos" : "Guardar nos favoritos"}"
+    aria-label="${marcado ? "Tirar dos favoritos" : "Guardar nos favoritos"}"
+    >${icone(marcado ? "estrela-cheia" : "estrela")}${
+      grande ? (marcado ? " Nos favoritos" : " Guardar nos favoritos") : ""}</button>`;
+};
+
+/* ==================================================================
+   CARREGAR OS DADOS
+
+   São dois arquivos, não um:
+
+     dados/indice.json   pequeno (24 KB), carrega sempre. Tem os totais do
+                         país, uma linha por estado, as premissas, os avisos
+                         e os textos compartilhados.
+     dados/uf/<UF>.json  o estado escolhido. O maior é o Rio de Janeiro,
+                         com 1,8 MB para 5.995 imóveis.
+
+   Por que dividido: num arquivo único os 18.266 imóveis dariam 24 MB de
+   JSON. Nenhum celular abre isso. Dividido, o navegador baixa só o estado
+   que está sendo olhado — e guarda em CACHE_UF, então voltar a um estado
+   já visto é instantâneo.
+   ================================================================== */
+async function carregarIndice() {
+  if (DADOS_EMBUTIDOS) return DADOS_EMBUTIDOS.indice;
+  const r = await fetch("dados/indice.json", { cache: "no-cache" });
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return r.json();
+}
+
+/* O arquivo do estado vem compactado: os nomes dos campos aparecem uma vez
+   em 'campos', cada imóvel é uma lista de valores na mesma ordem, e campo
+   de texto repetitivo guarda um índice para 'dicionarios'. Era 54% do
+   arquivo só de nome de campo repetido — ver analise/compactar.py. */
+function descompactar(bloco) {
+  const campos = bloco.campos || [];
+  const dics = campos.map(c => (bloco.dicionarios || {})[c] || null);
+  return (bloco.linhas || []).map(linha => {
+    const imovel = {};
+    for (let k = 0; k < campos.length; k++) {
+      imovel[campos[k]] = dics[k] ? dics[k][linha[k]] : linha[k];
+    }
+    return imovel;
+  });
+}
+
+/* Os campos que o arquivo não traz porque são sempre deriváveis. Fazer isto
+   aqui, e não no Python, economizou 1,5 MB no arquivo do Rio de Janeiro.
+   O texto do parecer vem dos MOLDES do indice.json: a redação continua
+   morando em analise/parecer.py, num lugar só — aqui só se preenche. */
+function completar(imoveis, resumo) {
+  const moldes = INDICE.moldes || {};
+  const niveis = INDICE.descricao_nivel || {};
+  const rotulos = INDICE.rotulos_ocupacao || {};
+  const rmPorCidade = new Map(
+    (resumo.cidades || []).map(c => [c.cidade, c.rm || ""]));
+  const preencher = (molde, valores) =>
+    String(molde || "").replace(/\{(\w+)\}/g,
+      (todo, chave) => (valores[chave] ?? todo));
+
+  for (const i of imoveis) {
+    i.link = PAGINA_CAIXA + i.id;
+    i.mercado_liquido = i.praca !== "interior";
+    i.tem_catalogo_rm = !!resumo.tem_catalogo_rm;
+    i.regiao_metropolitana = rmPorCidade.get(i.cidade) || "";
+    i.ocupado = i.ocupacao === "ocupado";
+    i.ocupacao_desconhecida = i.ocupacao === "nao_informada";
+    i.situacao = rotulos[i.ocupacao] || "não informada";
+
+    if (i.classe === "vetado") {
+      i.veredito = moldes.vetado || "";
+    } else if (i.desconto_real == null) {
+      i.veredito = moldes.sem_avaliacao || "";
+    } else {
+      const partes = [preencher(moldes.desconto, {
+        desconto: pct(i.desconto_real),
+      })];
+      if (i.vs_pares != null) {
+        partes.push(preencher(moldes.pares, {
+          diferenca: pct(Math.abs(i.vs_pares)),
+          lado: i.vs_pares < 0 ? "abaixo" : "acima",
+          pares: i.pares,
+          nivel: niveis[i.nivel_pares] || "",
+        }));
+      } else {
+        partes.push(moldes.sem_pares || "");
+      }
+      i.veredito = partes.join(". ") + ".";
+    }
+  }
+  return imoveis;
+}
+
+async function carregarUF(uf) {
+  if (CACHE_UF.has(uf)) return CACHE_UF.get(uf);
+
+  // A prévia offline embute o MESMO formato compacto que o arquivo tem,
+  // justamente para passar pelo mesmo caminho. Então ela também precisa
+  // ser descompactada — tratá-la como lista pronta deixava a página em
+  // branco, e só abrindo o arquivo com dois cliques dava para ver.
+  let bruto;
+  if (DADOS_EMBUTIDOS && DADOS_EMBUTIDOS.uf && DADOS_EMBUTIDOS.uf[uf]) {
+    bruto = DADOS_EMBUTIDOS.uf[uf];
+  } else {
+    const r = await fetch(`dados/uf/${uf}.json`, { cache: "no-cache" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    bruto = await r.json();
+  }
+
+  const resumo = bruto.resumo || {};
+  const pronto = {
+    resumo,
+    imoveis: completar(descompactar(bruto.imoveis || {}), resumo),
+  };
+  CACHE_UF.set(uf, pronto);
+  return pronto;
+}
+
+/* Troca o estado na tela. Devolve o controle já com a lista redesenhada.
+   Enquanto o arquivo não chega, a lista mostra que está carregando: num
+   celular em 4G o Rio de Janeiro leva uns dois segundos, e tela parada
+   sem explicação parece defeito. */
+async function trocarUF(uf, primeiraVez) {
+  uf = String(uf || "").toUpperCase();
+  if (!uf || uf === UF_ATUAL) return;
+
+  const select = $("#uf");
+  if (select) select.disabled = true;
+  if (!CACHE_UF.has(uf)) {
+    $("#lista").innerHTML = `<p class="vazio">${icone("atualizar")}
+      <strong>Carregando ${escapar(nomeUF(uf))}…</strong>
+      São ${num((estadoNoIndice(uf) || {}).total || 0)} imóveis.</p>`;
+    $("#contagem").textContent = "carregando…";
+  }
+
+  try {
+    const dados = await carregarUF(uf);
+    UF_ATUAL = uf;
+    TUDO = dados.imoveis;
+    RESUMO = dados.resumo;
+    try { localStorage.setItem(CHAVE_UF, uf) } catch (_) {}
+
+    // filtros de lugar não sobrevivem à troca de estado: bairro do Recife
+    // não existe em São Paulo, e deixar o filtro ligado daria lista vazia
+    // sem explicação nenhuma
+    filtros.cidade = ""; filtros.bairro = ""; filtros.tipo = "";
+    ["cidade", "bairro", "tipo"].forEach(id => { $("#" + id).value = "" });
+    escolhidos = escolhidos.filter(id => TUDO.some(i => i.id === id));
+
+    desenharEstados();
+    desenharTopo();
+    pagina = 1;
+    desenhar();
+    desenharComparacao();
+  } catch (erro) {
+    $("#lista").innerHTML = `<p class="vazio erro">
+      <strong>Não foi possível carregar ${escapar(nomeUF(uf))}</strong>
+      O arquivo <code>dados/uf/${escapar(uf)}.json</code> não respondeu
+      (${escapar(erro.message)}).</p>`;
+    $("#contagem").textContent = "Erro ao carregar";
+    if (select) select.value = UF_ATUAL;
+  } finally {
+    if (select) select.disabled = false;
+  }
+  if (primeiraVez !== true) $("#uf").focus({ preventScroll: true });
+}
+
+const estadoNoIndice = uf =>
+  (INDICE.estados || []).find(e => e.uf === uf);
+const nomeUF = uf => (estadoNoIndice(uf) || {}).nome || uf;
+
+/* ------------------------------------------------------------- filtrar */
+/* 'ignorar' deixa calcular quantos imóveis um filtro está escondendo.
+   O card de Vetados precisa disso: com "Sem vetados" ligado eles nunca
+   entram no resultado, e o card mostraria zero para sempre em vez de
+   dizer quantos estão escondidos ali. */
+function filtrar(ignorar) {
+  const b = filtros.busca.toLowerCase().trim();
+  const vale = n => filtros[n] && n !== ignorar;
+  return TUDO.filter(i => {
+    if (filtros.cidade && i.cidade !== filtros.cidade) return false;
+    if (filtros.bairro && i.bairro !== filtros.bairro) return false;
+    if (filtros.tipo && i.tipo !== filtros.tipo) return false;
+    if (filtros.pmin != null && i.preco < filtros.pmin) return false;
+    if (filtros.pmax != null && i.preco > filtros.pmax) return false;
+    if (filtros.amin != null && i.area < filtros.amin) return false;
+    if (filtros.amax != null && i.area > filtros.amax) return false;
+    if (filtros.quartos && i.quartos < +filtros.quartos) return false;
+    if (vale("destaques") && i.nota < INDICE.nota_destaque) return false;
+    if (vale("novos") && !i.novo) return false;
+    if (vale("favoritos") && !FAVORITOS.has(i.id)) return false;
+    if (filtros.liquido && !i.mercado_liquido) return false;
+    if (filtros.financiavel && !i.aceita_financiamento) return false;
+    if (filtros.comvaga && !i.vagas) return false;
+    if (vale("sem_veto") && i.classe === "vetado") return false;
+    if (filtros.sem_lote && i.lote >= 5) return false;
+    if (b && !(i.bairro + " " + i.cidade + " " + i.uf + " " + i.endereco
+      + " " + i.tipo).toLowerCase().includes(b)) return false;
+    return true;
+  }).sort(ordenador(filtros.ordem));
+}
+
+function ordenador(o) {
+  // Ausente vai sempre para o fim, nos dois sentidos: imóvel sem área ou
+  // sem desconto não deve encabeçar a lista só por estar vazio.
+  const maior = f => (a, b) => (f(b) ?? -Infinity) - (f(a) ?? -Infinity);
+  const menor = f => (a, b) => (f(a) ?? Infinity) - (f(b) ?? Infinity);
+  const porOrdem = {
+    desconto: maior(i => i.desconto_real),
+    desconto_menor: menor(i => i.desconto_real),
+    preco: menor(i => i.preco),
+    preco_maior: maior(i => i.preco),
+    m2: menor(i => i.preco_m2),
+    m2_maior: maior(i => i.preco_m2),
+    area: maior(i => i.area),
+    area_menor: menor(i => i.area || null),
+  };
+  return porOrdem[o] || ((a, b) => b.nota - a.nota);
+}
+
+function etiquetasDe(i) {
+  const e = [];
+  if (i.novo) e.push(["novo", "Novo"]);
+  if (i.classe === "vetado") e.push(["veto", "Vetado"]);
+  else if (i.nota >= INDICE.nota_destaque) e.push(["bom", "Destaque"]);
+  if (i.queda_preco) e.push(["bom", "Baixou " + pct(i.queda_preco)]);
+  if (i.lote >= 5) e.push(["atencao", i.lote + " iguais"]);
+  // Ocupado é risco concreto e caro: âmbar. Desocupado é notícia boa:
+  // verde. "Não informada" é só ausência de informação — cinza, sem
+  // alarme falso, que é o estado da maioria enquanto as páginas da
+  // Caixa não terminam de ser lidas.
+  if (i.ocupacao === "ocupado") e.push(["atencao", "Ocupado"]);
+  else if (i.ocupacao === "desocupado") e.push(["bom", "Desocupado"]);
+  else e.push(["", "Ocupação não informada"]);
+  e.push(["", i.pagamento]);
+  e.push(["", i.modalidade.replace(" - Edital Único", "")]);
+  return e;
+}
+
+/* --------------------------------------------------------------- lista */
+function cartao(i) {
+  const esp = [
+    [i.area ? m2(i.area) : null, "regua"],
+    [i.quartos ? i.quartos + " qto" + (i.quartos > 1 ? "s" : "") : null, "cama"],
+    [i.vagas ? i.vagas + " vaga" + (i.vagas > 1 ? "s" : "") : null, "carro"],
+    [i.preco_m2 ? moeda(i.preco_m2) + "/m²" : null, "dinheiro"],
+  ].filter(([t]) => t).map(([t, ic]) =>
+    `<span>${icone(ic)}${t}</span>`).join("");
+
+  const dentro = escolhidos.includes(i.id);
+  return `<article class="item" data-cor="${i.cor}" data-id="${i.id}"
+    data-fav-on="${FAVORITOS.has(i.id)}">
+    <div class="faixa-cor"></div>
+    <div class="item-meio">
+      <div class="item-titulo"><h3>${i.tipo}</h3>
+        <span class="local">${icone("pin")}${escapar(i.bairro)} · ${escapar(i.cidade)}/${escapar(i.uf)}</span>
+      </div>
+      <div class="especificacoes">${esp}</div>
+      <div class="etiquetas">${etiquetasDe(i).map(([c, t]) =>
+        `<span class="etiqueta ${c}">${escapar(t)}</span>`).join("")}</div>
+      <p class="veredito">${escapar(i.veredito)}</p>
+    </div>
+    <div class="item-dinheiro">
+      <div class="preco">${moeda(i.preco)}<small>preço pedido</small></div>
+      <div class="descontos">
+        <div><span>Anunciado</span><b>${pct(i.desconto_anunciado)}</b></div>
+        <div class="real"><span>Real</span><b>${pct(i.desconto_real)}</b></div>
+      </div>
+      <div class="item-acoes">
+        ${botaoFavorito(i.id)}
+        <button class="botao botao-pequeno" data-acao="detalhe">Detalhes</button>
+        <button class="botao botao-pequeno" data-acao="comparar">
+          ${dentro ? "✓ comparando" : "+ comparar"}</button>
+        ${i.link ? `<a class="botao botao-pequeno" href="${escapar(i.link)}"
+          target="_blank" rel="noopener"
+          title="Fotos, edital e matrícula no site da Caixa">${icone("doc")}
+          Página da Caixa</a>` : ""}
+      </div>
+    </div>
+  </article>`;
+}
+
+function desenhar() {
+  const achados = filtrar();
+  const mostrar = achados.slice(0, pagina * POR_PAGINA);
+  desenharNumeros(achados);
+
+  $("#contagem").innerHTML = achados.length
+    ? `<strong>${num(achados.length)}</strong> de ${num(TUDO.length)} imóveis`
+    : "Nenhum imóvel com esses filtros";
+
+  $("#lista").innerHTML = achados.length ? mostrar.map(cartao).join("")
+    : `<p class="vazio"><strong>Nada encontrado</strong>
+       Afrouxe um filtro — aumente o preço máximo ou desmarque
+       "Sem vetados".</p>`;
+
+  $("#mais").hidden = mostrar.length >= achados.length;
+  $("#mais").textContent =
+    `Mostrar mais ${Math.min(POR_PAGINA, achados.length - mostrar.length)}`;
+  $("#n-comparar").textContent = escolhidos.length ? `(${escolhidos.length})` : "";
+
+  // Em tela estreita os filtros ficam escondidos na gaveta. Sem este
+  // contador, dá para passar meia hora olhando uma lista curta sem
+  // perceber que sobrou um filtro ligado lá dentro.
+  const quantos = contarFiltros();
+  const selo = $("#conta-filtros");
+  selo.hidden = !quantos;
+  selo.textContent = quantos;
+  $("#ver-resultado").textContent = achados.length
+    ? `Ver ${num(achados.length)} ${achados.length === 1 ? "imóvel" : "imóveis"}`
+    : "Nenhum imóvel — afrouxe um filtro";
+}
+
+// o estado "limpo" dos filtros, num lugar só: serve para contar quantos
+// estão ligados e para o botão "Limpar filtros" não sair do compasso
+const PADRAO_FILTROS = {
+  busca: "", cidade: "", bairro: "", tipo: "", pmin: null, pmax: null,
+  amin: null, amax: null, quartos: "", destaques: false, novos: false,
+  liquido: false, financiavel: false, comvaga: false, favoritos: false,
+  sem_veto: true, sem_lote: false,
+};
+const contarFiltros = () => Object.keys(PADRAO_FILTROS)
+  .filter(k => filtros[k] !== PADRAO_FILTROS[k]).length;
+
+/* ------------------------------------------------- ocupação na gaveta */
+/* O texto do roteiro vem pronto do resumo.json, escrito em
+   analise/ocupacao.py. A página só desenha: a regra mora num lugar só.  */
+function blocoOcupacao(i) {
+  const chave = i.ocupacao || "nao_informada";
+  const r = (INDICE.roteiro_desocupacao || {})[chave];
+  if (!r) return "";
+
+  // O trecho original da página da Caixa vai para a tela de propósito:
+  // se a leitura automática errar, quem olha percebe na hora.
+  const de_onde = i.ocupacao_trecho
+    ? `<span class="de-onde">Lido na ${escapar(i.ocupacao_fonte)}:
+       <q>${escapar(i.ocupacao_trecho)}</q></span>`
+    : (i.ocupacao_fonte
+      ? `<span class="de-onde">Conforme a ${escapar(i.ocupacao_fonte)}.</span>`
+      : `<span class="de-onde">Nem o arquivo da Caixa nem a página deste
+         imóvel afirmaram a situação.</span>`);
+
+  const custo = i.desocupacao
+    ? `A conta acima reserva <b>${moeda(i.desocupacao)}</b> para isto.`
+    : `Sem provisão de desocupação na conta acima.`;
+
+  const etapas = (r.blocos || []).map(b => `<div class="etapa">
+    <b>${escapar(b.titulo)}</b>
+    <ul>${(b.passos || []).map(p => `<li>${escapar(p)}</li>`).join("")}</ul>
+  </div>`).join("");
+
+  // Quando a página deste imóvel foi visitada pela última vez. É a mesma
+  // visita que confere se ele ainda existe, então a data diz também há
+  // quanto tempo sabemos que ele estava no ar.
+  const conferido = i.conferido_em
+    ? `<span class="de-onde">Página conferida em
+       <b>${escapar(i.conferido_em.split("-").reverse().join("/"))}</b> —
+       o imóvel ainda estava no site da Caixa.</span>`
+    : `<span class="de-onde">A página deste imóvel ainda não foi visitada:
+       a fila anda 300 por dia.</span>`;
+
+  return `<div class="bloco">
+    <h3>${icone("casa")} Ocupação e desocupação</h3>
+    <div class="selo-ocupacao" data-s="${escapar(chave)}">
+      ${icone(chave === "desocupado" ? "info" : "alerta")}
+      <b>${escapar(r.situacao)}</b>
+      ${de_onde}
+      ${conferido}
+    </div>
+    <div class="roteiro">
+      <p>${escapar(r.resumo)} ${custo}</p>
+      ${etapas}
+    </div>
+    <p class="juridico">${escapar(INDICE.aviso_juridico || "")}</p>
+  </div>`;
+}
+
+/* -------------------------------------------------------------- gaveta */
+function abrirDetalhe(id) {
+  const i = TUDO.find(x => x.id === id);
+  if (!i) return;
+
+  const endereco = [i.endereco, i.bairro, i.cidade, i.uf]
+    .filter(Boolean).join(", ");
+  const busca = encodeURIComponent(endereco);
+  const dentro = escolhidos.includes(i.id);
+
+  const par = (r, v, s) => `<div class="par"><dt>${r}</dt>
+    <dd>${v}${s ? `<small>${s}</small>` : ""}</dd></div>`;
+
+  const ress = (i.ressalvas || []).map(n => {
+    const t = TEXTOS[n] || "";
+    const grave = t.startsWith("Armadilha");
+    return `<li class="${grave ? "grave" : ""}">
+      ${icone(grave ? "alerta" : "info")}${escapar(t)}</li>`;
+  }).join("");
+
+  document.body.insertAdjacentHTML("beforeend", `
+    <div class="sombra-gaveta" data-sair></div>
+    <aside class="gaveta" data-cor="${i.cor}" data-id="${escapar(i.id)}"
+           role="dialog" aria-modal="true" aria-label="Detalhes do imóvel">
+      <div class="gaveta-topo">
+        <div class="linha">
+          <div style="min-width:0">
+            <h2>${escapar(i.tipo)} · ${escapar(i.bairro)}</h2>
+            <p class="end">${icone("pin")}<span>${escapar(endereco)}</span></p>
+          </div>
+          <button class="fechar" type="button" data-sair aria-label="Fechar">
+            ${icone("x")}</button>
+        </div>
+        <div class="etiquetas">${etiquetasDe(i).map(([c, t]) =>
+          `<span class="etiqueta ${c}">${escapar(t)}</span>`).join("")}</div>
+      </div>
+
+      <div class="gaveta-corpo">
+        <p class="parecer-caixa">${escapar(i.veredito)}</p>
+
+        <div class="bloco">
+          <h3>${icone("regua")} Áreas e características</h3>
+          <div class="pares">
+            ${par("Área privativa", m2(i.area_privativa), "o que é seu")}
+            ${par("Área total", m2(i.area_total), "inclui comum")}
+            ${par("Área do terreno", m2(i.area_terreno), "o lote")}
+            ${par("Quartos", i.quartos || "—")}
+            ${par("Vagas", i.vagas || "—")}
+            ${par("R$/m² pedido", i.preco_m2 ? moeda(i.preco_m2) : "—")}
+          </div>
+        </div>
+
+        <div class="bloco">
+          <h3>${icone("dinheiro")} A conta completa</h3>
+          <div class="conta">
+            <div><span>Preço pedido</span><b>${moeda(i.preco)}</b></div>
+            <div><span>Avaliação da Caixa</span><b>${moeda(i.avaliacao)}</b></div>
+            <div><span>Desconto anunciado</span><b>${pct(i.desconto_anunciado)}</b></div>
+            <div><span>+ Reforma estimada</span><b>${moeda(i.reforma)}</b></div>
+            <div><span>+ Provisão de desocupação</span><b>${moeda(i.desocupacao)}</b></div>
+            ${i.comissao ? `<div><span>+ Comissão do leiloeiro</span>
+              <b>${moeda(i.comissao)}</b></div>` : ""}
+            <div class="soma"><span>Custo real do imóvel</span>
+              <b>${moeda(i.custo_real)}</b></div>
+            <div class="soma real"><span>Desconto REAL</span>
+              <b>${pct(i.desconto_real)}</b></div>
+            <div><span>+ ITBI</span><b>${moeda(i.itbi)}</b></div>
+            <div><span>+ Escritura, registro e certidões</span>
+              <b>${moeda(i.cartorio)}</b></div>
+            <div class="soma"><span>Desembolso total</span>
+              <b>${moeda(i.desembolso)}</b></div>
+          </div>
+        </div>
+
+        <div class="bloco">
+          <h3>${icone("comparar")} Contra os pares da lista</h3>
+          <div class="pares">
+            ${par("R$/m² dos pares", i.ref_m2 ? moeda(i.ref_m2) : "—",
+              i.pares ? `${i.pares} imóveis ${(INDICE.descricao_nivel || {})[i.nivel_pares] || "parecidos"}`
+                : "sem pares")}
+            ${par("Posição", i.vs_pares == null ? "—"
+              : (i.vs_pares < 0 ? pct(-i.vs_pares) + " abaixo"
+                : pct(i.vs_pares) + " acima"))}
+            ${par("Unidades idênticas", num(i.lote),
+              i.lote >= 5 ? "lote em bloco" : "")}
+            ${par("Nota", i.nota.toFixed(2), "de 0 a 1")}
+            ${par("No acervo",
+              (i.dias_no_acervo === 0 ? "entrou hoje"
+                : (i.data_estimada ? "≥ " : "") + num(i.dias_no_acervo)
+                  + (i.dias_no_acervo === 1 ? " dia" : " dias")),
+              // Imóvel parado há meses pelo mesmo preço é informação: ou
+              // tem algo que afasta comprador, ou o preço ainda não caiu
+              // o bastante. Imóvel recém-listado ainda não foi testado
+              // pelo mercado.
+              i.data_estimada ? "data importada de outro radar"
+                : "desde " + (i.visto_em || "").split("-").reverse().join("/"))}
+          </div>
+        </div>
+
+        ${blocoOcupacao(i)}
+
+        <div class="bloco">
+          <h3>${icone("pin")} Onde fica</h3>
+          <div class="pares">
+            ${par("Estado", `${escapar(i.uf)}`, escapar(nomeUF(i.uf)))}
+            ${par("Cidade", `<span style="font-size:12px">${escapar(i.cidade)}</span>`,
+              escapar((INDICE.nomes_praca || {})[i.praca] || ""))}
+            ${par("Bairro", `<span style="font-size:12px">${escapar(i.bairro)}</span>`)}
+            ${par("Mercado",
+              `<span style="font-size:12px">${i.mercado_liquido
+                ? "com liquidez" : "mais raso"}</span>`,
+              // A composição de região metropolitana é definida por lei
+              // estadual e muda; quando o imóvel está numa, o nome dela
+              // aparece aqui para a pessoa poder conferir na fonte.
+              escapar(i.regiao_metropolitana
+                || (i.praca === "capital" ? "capital do estado"
+                  : (i.tem_catalogo_rm ? "fora da capital e da região metropolitana"
+                    : "estado sem lista de RM conferida neste projeto"))))}
+          </div>
+        </div>
+
+        <div class="bloco">
+          <h3>${icone("doc")} Venda e documentação</h3>
+          <div class="pares">
+            ${par("Modalidade", `<span style="font-size:12px">${escapar(i.modalidade)}</span>`)}
+            ${par("Pagamento", `<span style="font-size:12px">${escapar(i.pagamento)}</span>`)}
+            ${par("Situação", `<span style="font-size:12px">${escapar(i.situacao || "não informada")}</span>`)}
+            ${par("Nº Caixa", `<span style="font-size:11px">${escapar(i.id)}</span>`)}
+          </div>
+        </div>
+
+        ${ress ? `<div class="bloco"><h3>${icone("alerta")} Ressalvas</h3>
+          <ul class="ressalvas">${ress}</ul></div>` : ""}
+
+        <div class="bloco">
+          <h3>${icone("doc")} No site da Caixa</h3>
+          <div class="links-externos">
+            ${i.link ? `<a class="botao botao-forte" href="${escapar(i.link)}"
+              target="_blank" rel="noopener">${icone("doc")}
+              Abrir a página do imóvel</a>` : ""}
+            <p class="nota-caixa">É lá que ficam as fotos, o edital, a
+              matrícula e a situação de ocupação — informações que não vêm no
+              arquivo que a Caixa publica para download.</p>
+          </div>
+        </div>
+
+        <div class="acoes-gaveta">
+          ${botaoFavorito(i.id, true)}
+          <button class="botao ${dentro ? "" : "botao-forte"}" type="button"
+                  data-cmp="${i.id}">${icone("comparar")}
+            ${dentro ? "Tirar da comparação" : "Adicionar à comparação"}</button>
+        </div>
+      </div>
+    </aside>`);
+
+  document.body.style.overflow = "hidden";
+}
+
+function fecharDetalhe() {
+  document.querySelectorAll(".gaveta, .sombra-gaveta").forEach(e => e.remove());
+  document.body.style.overflow = "";
+}
+
+/* ------------------------------------------------------------ comparar */
+const LINHAS = [
+  ["Preço pedido", i => moeda(i.preco), i => i.preco, -1, "marco"],
+  ["Avaliação da Caixa", i => moeda(i.avaliacao), i => i.avaliacao, 0, ""],
+  ["Desconto anunciado", i => pct(i.desconto_anunciado),
+    i => i.desconto_anunciado, 1, ""],
+  ["Área privativa", i => m2(i.area_privativa), i => i.area_privativa, 1, ""],
+  ["Área total", i => m2(i.area_total), i => i.area_total, 1, ""],
+  ["Área do terreno", i => m2(i.area_terreno), i => i.area_terreno, 1, ""],
+  ["R$/m² pedido", i => i.preco_m2 ? moeda(i.preco_m2) : "—",
+    i => i.preco_m2, -1, ""],
+  ["Quartos", i => num(i.quartos), i => i.quartos, 1, ""],
+  ["Vagas", i => num(i.vagas), i => i.vagas, 1, ""],
+  ["Reforma estimada", i => moeda(i.reforma), i => i.reforma, -1, ""],
+  ["Provisão de desocupação", i => moeda(i.desocupacao), i => i.desocupacao, -1, ""],
+  ["Comissão do leiloeiro", i => moeda(i.comissao), i => i.comissao, -1, ""],
+  ["Custo real do imóvel", i => moeda(i.custo_real), i => i.custo_real, -1, "marco"],
+  ["Desconto REAL", i => pct(i.desconto_real), i => i.desconto_real, 1, "marco"],
+  ["ITBI", i => moeda(i.itbi), i => i.itbi, -1, ""],
+  ["Escritura e registro", i => moeda(i.cartorio), i => i.cartorio, -1, ""],
+  ["Desembolso total", i => moeda(i.desembolso), i => i.desembolso, -1, "marco"],
+  ["R$/m² dos pares", i => i.ref_m2 ? moeda(i.ref_m2) : "sem pares", null, 0, ""],
+  ["Contra os pares", i => i.vs_pares == null ? "—"
+    : (i.vs_pares < 0 ? pct(-i.vs_pares) + " abaixo" : pct(i.vs_pares) + " acima"),
+    i => i.vs_pares, -1, ""],
+  ["Unidades idênticas", i => num(i.lote), i => i.lote, -1, ""],
+  ["Modalidade", i => i.modalidade, null, 0, ""],
+  ["Pagamento", i => i.pagamento, null, 0, ""],
+  ["Nota", i => i.nota.toFixed(2), i => i.nota, 1, "marco"],
+];
+
+function desenharComparacao() {
+  const itens = escolhidos.map(id => TUDO.find(i => i.id === id)).filter(Boolean);
+  $("#slots").textContent = `${itens.length} de ${MAX_CMP}`;
+  $("#limpar-cmp").disabled = !itens.length;
+  $("#n-comparar").textContent = itens.length ? `(${itens.length})` : "";
+
+  if (!itens.length) {
+    $("#cmp-corpo").innerHTML = `<p class="vazio" style="border:none">
+      <strong>Nenhum imóvel selecionado</strong>
+      Na aba Lista ou no mapa, clique em "+ comparar" em até três imóveis.
+      Eles aparecem aqui lado a lado, e o melhor de cada linha fica em
+      verde.</p>`;
+    return;
+  }
+
+  const cabeca = itens.map(i => `<th>
+    <span class="cid">${escapar(i.bairro)} · ${escapar(i.cidade)}/${escapar(i.uf)}</span>
+    ${escapar(i.tipo)}
+    <button class="tirar" type="button" data-tirar="${i.id}">tirar</button></th>`
+  ).join("");
+
+  const corpo = LINHAS.map(([rot, mostrar, valor, sentido, cls]) => {
+    let melhor = null;
+    if (valor && sentido && itens.length > 1) {
+      const vs = itens.map(valor).filter(v => v != null && !isNaN(v));
+      if (vs.length > 1) melhor = sentido > 0 ? Math.max(...vs) : Math.min(...vs);
+    }
+    const celulas = itens.map(i => {
+      const v = valor ? valor(i) : null;
+      const c = melhor == null ? "" : (v === melhor ? "vence" : "perde");
+      return `<td class="${c}">${mostrar(i)}</td>`;
+    }).join("");
+    return `<tr class="${cls}"><th>${rot}</th>${celulas}</tr>`;
+  }).join("");
+
+  const parecer = `<tr class="txt"><th>Parecer</th>` +
+    itens.map(i => `<td>${escapar(i.veredito)}</td>`).join("") + "</tr>";
+  const ress = `<tr class="txt"><th>Ressalvas</th>` + itens.map(i =>
+    `<td>${(i.ressalvas || []).map(n => escapar(TEXTOS[n])).join(" ")
+      || "nenhuma"}</td>`).join("") + "</tr>";
+  const acoes = `<tr><th>Abrir</th>` + itens.map(i =>
+    `<td><button class="botao botao-pequeno" data-detalhe="${i.id}">detalhes</button></td>`
+  ).join("") + "</tr>";
+
+  $("#cmp-corpo").innerHTML = `<div class="rolagem"><table class="cmp">
+    <thead><tr><th>Item</th>${cabeca}</tr></thead>
+    <tbody>${corpo}${parecer}${ress}${acoes}</tbody></table></div>`;
+}
+
+function alternarCmp(id) {
+  if (escolhidos.includes(id)) escolhidos = escolhidos.filter(x => x !== id);
+  else { if (escolhidos.length >= MAX_CMP) escolhidos.shift(); escolhidos.push(id) }
+  desenharComparacao();
+  desenhar();
+  const g = document.querySelector(".gaveta");
+  if (g) { fecharDetalhe(); abrirDetalhe(id) }
+}
+
+/* ===================================================================
+   ACOMPANHAR A EXECUÇÃO
+   Não existe botão de disparar nesta página, e isso é proposital: para
+   MANDAR o robô rodar seria preciso uma credencial do GitHub com
+   permissão de escrita, e credencial não pode morar num site estático —
+   qualquer visitante leria o código-fonte e teria acesso de escrita ao
+   repositório. A pesquisa se dispara pelo "Run workflow" do GitHub, ou
+   sozinha às 06:10.
+
+   ACOMPANHAR, ao contrário, não exige nada: a API pública do GitHub
+   conta o andamento de qualquer repositório público sem login. Então,
+   se você rodar o workflow pelo GitHub e voltar para cá, esta página
+   mostra o progresso e troca os dados sozinha quando terminar — sem
+   precisar recarregar nem perder os filtros que você montou.
+   =================================================================== */
+const PESQUISA = { timer: null, relogio: null, inicio: 0, voltas: 0, idAnterior: null };
+const MAX_VOLTAS = 40;        // 40 × 15s = 10 minutos de paciência
+const INTERVALO = 15000;      // a API pública dá 60 chamadas por hora
+
+const API = repo =>
+  `https://api.github.com/repos/${repo}/actions/workflows/atualizar.yml/runs?per_page=1`;
+const TELA_ACTIONS = repo =>
+  `https://github.com/${repo}/actions/workflows/atualizar.yml`;
+
+async function ultimaExecucao(repo) {
+  const r = await fetch(API(repo), {
+    headers: { Accept: "application/vnd.github+json" }, cache: "no-store",
+  });
+  if (r.status === 403 || r.status === 429) throw new Error("limite");
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return ((await r.json()).workflow_runs || [])[0] || null;
+}
+
+function tarja(estado, texto, extra = "") {
+  const t = $("#tarja");
+  t.hidden = false;
+  t.dataset.estado = estado;
+  const ic = { erro: "alerta", pronto: "info" }[estado] || "atualizar";
+  const girar = (estado === "erro" || estado === "pronto") ? "" : " girando";
+  t.innerHTML = `<svg class="i${girar}"><use href="#ic-${ic}"/></svg>
+    <span>${texto}</span>${extra}
+    <span class="cronometro" id="cronometro"></span>`;
+}
+
+function cronometrar(ligar) {
+  clearInterval(PESQUISA.relogio);
+  if (!ligar) return;
+  PESQUISA.inicio = PESQUISA.inicio || Date.now();
+  const tique = () => {
+    const s = Math.floor((Date.now() - PESQUISA.inicio) / 1000);
+    const alvo = $("#cronometro");
+    if (alvo) alvo.textContent =
+      `${String(Math.floor(s / 60)).padStart(2, "0")}:${String(s % 60).padStart(2, "0")}`;
+  };
+  tique();
+  PESQUISA.relogio = setInterval(tique, 1000);
+}
+
+function pararPesquisa() {
+  clearInterval(PESQUISA.timer); clearInterval(PESQUISA.relogio);
+  PESQUISA.timer = PESQUISA.relogio = null;
+  PESQUISA.voltas = 0; PESQUISA.inicio = 0;
+}
+
+/* Recarrega só os dados, sem recarregar a página: o filtro que a pessoa
+   montou e a aba em que ela estava continuam de pé. */
+async function recarregarDados() {
+  // Dois arquivos agora: o índice e o estado que está na tela. E o cache
+  // dos estados já baixados tem de ser esvaziado — ele guarda a versão
+  // ANTIGA, e manter o Rio de ontem em memória depois de uma execução
+  // nova faria a troca de estado mostrar dado velho sem avisar.
+  const ri = await fetch("dados/indice.json?t=" + Date.now(),
+                         { cache: "no-store" });
+  if (!ri.ok) throw new Error("HTTP " + ri.status);
+  INDICE = await ri.json();
+  TEXTOS = INDICE.textos_ressalvas || [];
+  CACHE_UF.clear();
+
+  const uf = UF_ATUAL || ufInicial();
+  const ru = await fetch(`dados/uf/${uf}.json?t=` + Date.now(),
+                         { cache: "no-store" });
+  if (!ru.ok) throw new Error("HTTP " + ru.status);
+  const bruto = await ru.json();
+  RESUMO = bruto.resumo || {};
+  TUDO = completar(descompactar(bruto.imoveis || {}), RESUMO);
+  CACHE_UF.set(uf, { resumo: RESUMO, imoveis: TUDO });
+  UF_ATUAL = uf;
+
+  const cidade = $("#cidade").value, tipo = $("#tipo").value;
+  desenharEstados();
+  desenharTopo();
+  // preserva a escolha de quem estava olhando quando os dados trocaram
+  $("#cidade").value = cidade; filtros.cidade = cidade;
+  $("#tipo").value = tipo; filtros.tipo = tipo;
+  encherBairros();
+  desenhar(); desenharComparacao();
+}
+
+async function espiar(repo) {
+  PESQUISA.voltas++;
+  if (PESQUISA.voltas > MAX_VOLTAS) {
+    pararPesquisa();
+    return tarja("erro", "A execução está demorando mais que o normal.",
+      `<a href="${TELA_ACTIONS(repo)}" target="_blank" rel="noopener">ver no GitHub</a>`);
+  }
+
+  let exec;
+  try { exec = await ultimaExecucao(repo) } catch (e) {
+    if (e.message === "limite") {
+      pararPesquisa();
+      return tarja("erro", "O GitHub limitou as consultas por hora. " +
+        "A execução continua; recarregue a página daqui a pouco.");
+    }
+    return;   // falha de rede isolada: tenta de novo na próxima volta
+  }
+  if (!exec) return;
+
+  // enquanto o GitHub não registra a execução nova, seguimos esperando
+  if (PESQUISA.idAnterior && exec.id === PESQUISA.idAnterior
+      && exec.status === "completed") {
+    return tarja("rodando", "Pedido enviado. Aguardando o GitHub começar…");
+  }
+
+  const url = exec.html_url;
+  const link = `<a href="${url}" target="_blank" rel="noopener">acompanhar</a>`;
+
+  if (exec.status === "queued" || exec.status === "pending")
+    return tarja("rodando", "Na fila do GitHub…", link);
+  if (exec.status === "in_progress")
+    return tarja("rodando",
+      "Baixando a lista da Caixa e refazendo a análise…", link);
+
+  // terminou
+  pararPesquisa();
+  if (exec.conclusion === "success") {
+    tarja("pronto", "Pesquisa concluída. Atualizando os dados…");
+    try {
+      await recarregarDados();
+      tarja("pronto", `Pronto. Lista da Caixa de <b>${INDICE.data_da_lista}</b>,
+        ${num(INDICE.total)} imóveis no Brasil,
+        ${num(RESUMO.total)} em ${escapar(UF_ATUAL)},
+        ${num(INDICE.novos)} novos.`);
+    } catch (_) {
+      tarja("pronto", "Pesquisa concluída. Recarregue a página para ver.");
+    }
+    setTimeout(() => { $("#tarja").hidden = true }, 20000);
+  } else {
+    tarja("erro", `A execução terminou com falha (${escapar(exec.conclusion || "?")}).`,
+      `<a href="${url}" target="_blank" rel="noopener">ver o motivo</a>`);
+  }
+}
+
+function acompanhar(repo) {
+  clearInterval(PESQUISA.timer);
+  PESQUISA.voltas = 0;
+  cronometrar(true);
+  PESQUISA.timer = setInterval(() => espiar(repo), INTERVALO);
+  espiar(repo);
+}
+
+/* Ao abrir a página: se o robô das 06:10 estiver rodando agora, mostra e
+   atualiza sozinho quando terminar. Falha em silêncio — é um extra. */
+async function verSeJaEstaRodando() {
+  const repo = descobrirRepo();
+  if (!repo) return;
+  try {
+    const exec = await ultimaExecucao(repo);
+    if (!exec || exec.status === "completed") return;
+    PESQUISA.idAnterior = null;
+    PESQUISA.inicio = Date.parse(exec.run_started_at || exec.created_at)
+      || Date.now();
+    tarja("rodando", "Atualização em andamento no GitHub…");
+    acompanhar(repo);
+  } catch (_) { /* sem internet ou limite atingido: não é problema */ }
+}
+
+/* ----------------------------------------------------------------- topo */
+function desenharTopo() {
+  // "fora do ar": estavam na lista da Caixa, mas a página de cada um
+  // respondeu que o imóvel não existe mais. Já foram removidos — a linha
+  // existe para a conta fechar quando alguém comparar com a lista bruta.
+  const fora = INDICE.fora_do_ar
+    ? `<span title="Estavam na lista da Caixa de ${escapar(INDICE.data_da_lista)},
+         mas a página de cada um respondeu que o imóvel não existe mais.
+         Foram retirados daqui.">${icone("x")}<b>${num(INDICE.fora_do_ar)}</b>
+       já saíram do site da Caixa</span>` : "";
+
+  // A prévia offline mostra só um recorte. Dizer isso na tela evita a
+  // pergunta "por que 148 de 160 e não 1.060?" — que já foi feita, porque
+  // o aviso existia no arquivo e nunca era desenhado em lugar nenhum.
+  const previa = RESUMO.aviso_previa
+    ? `<span class="previa">${icone("alerta")}${escapar(RESUMO.aviso_previa)}
+         Os números do topo contam só este recorte.</span>` : "";
+
+  // Data, processamento e próxima execução descrevem o ARQUIVO, não o
+  // estado: vêm do índice e não mudam quando se troca de UF.
+  $("#atualizacao").innerHTML = previa +
+    `<span>${icone("doc")}Lista da Caixa de <b>${INDICE.data_da_lista}</b></span>
+     <span>${icone("casa")}<b>${num(INDICE.total)}</b> imóveis em
+       <b>${(INDICE.estados || []).length}</b> estados</span>
+     <span>${icone("atualizar")}Processada em <b>${dataHora(INDICE.gerado_em)}</b></span>
+     <span>${icone("relogio")}Próxima atualização automática
+       <b>${dataHora(INDICE.proxima_atualizacao)}</b></span>${fora}`;
+
+  // premissas e avisos valem para o país inteiro: vêm do índice
+  $("#premissas").innerHTML = (INDICE.premissas || []).map(p =>
+    `<div class="premissa"><b>${escapar(p.nome)}</b>
+     <code>${escapar(p.valor)}</code><p>${escapar(p.nota)}</p></div>`).join("");
+  $("#riscos").innerHTML = (INDICE.avisos || []).map(a =>
+    `<div class="risco"><b>${escapar(a.titulo)}</b>
+     <p>${escapar(a.texto)}</p></div>`).join("");
+
+  const cidades = RESUMO.cidades || [];
+  $("#cidade").innerHTML = `<option value="">Todas (${cidades.length})</option>`
+    + cidades.map(c => `<option value="${escapar(c.cidade)}">${escapar(c.cidade)} (${c.total})</option>`).join("");
+  $("#tipo").innerHTML = `<option value="">Todos</option>`
+    + Object.entries(RESUMO.tipos || {}).sort((a, b) => b[1] - a[1])
+      .map(([t, n]) => `<option value="${escapar(t)}">${escapar(t)} (${n})</option>`).join("");
+  encherBairros();
+}
+
+/* -------------------------------------------------------------- estados */
+/* O seletor de estados sai do indice.json, não dos imóveis: ele tem de
+   mostrar as 27 opções com a contagem de cada uma ANTES de qualquer estado
+   ser baixado. Ordenado por quantidade, porque é isso que a pessoa procura
+   — e o Rio de Janeiro, com 5.995 dos 18.266, não pode ficar no fim de uma
+   lista alfabética. */
+function desenharEstados() {
+  const estados = INDICE.estados || [];
+  $("#uf").innerHTML = estados.map(e =>
+    `<option value="${escapar(e.uf)}">${escapar(e.uf)} — ${escapar(e.nome)}
+      (${num(e.total)})</option>`).join("");
+  $("#uf").value = UF_ATUAL;
+
+  const atual = estadoNoIndice(UF_ATUAL);
+  if (!atual) { $("#dica-uf").textContent = ""; return }
+  // Avisar quando o estado NÃO tem catálogo de região metropolitana é
+  // mais honesto que mostrar tudo como "interior" calado: nesses estados
+  // a única coisa afirmável é se a cidade é a capital.
+  const semRM = atual.tem_catalogo_rm ? "" :
+    " Neste estado o projeto ainda não tem lista de região metropolitana" +
+    " conferida, então só a capital é distinguida do resto.";
+  $("#dica-uf").textContent =
+    `${num(atual.total)} imóveis em ${num(atual.cidades)} cidades · ` +
+    `${num(INDICE.total)} no Brasil.${semRM}`;
+}
+
+/* ------------------------------------------------------------- bairros */
+/* São 237 bairros na lista inteira, e 133 deles têm um imóvel só. Uma
+   lista dessas é inútil, então ela segue a cidade escolhida: com Olinda
+   no filtro, só os bairros de Olinda aparecem. Os nomes saem do próprio
+   radar.json, não de um campo novo — assim nada precisa mudar no robô. */
+function encherBairros() {
+  const dentro = filtros.cidade
+    ? TUDO.filter(i => i.cidade === filtros.cidade) : TUDO;
+  const conta = new Map();
+  for (const i of dentro) {
+    if (i.bairro) conta.set(i.bairro, (conta.get(i.bairro) || 0) + 1);
+  }
+  const lista = [...conta.entries()].sort(
+    (a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "pt-BR"));
+
+  // se o bairro escolhido não existe na cidade nova, some sozinho
+  if (filtros.bairro && !conta.has(filtros.bairro)) filtros.bairro = "";
+
+  $("#bairro").innerHTML = `<option value="">Todos (${lista.length})</option>`
+    + lista.map(([b, n]) =>
+      `<option value="${escapar(b)}">${escapar(b)} (${n})</option>`).join("");
+  $("#bairro").value = filtros.bairro;
+  $("#bairro").disabled = !lista.length;
+}
+
+/* ---------------------------------------------------- números do topo */
+/* Os números contam o CONJUNTO FILTRADO, não o estado inteiro: filtrando
+   por um bairro, o card de Destaques diz quantos destaques existem ali.
+   O total geral fica embaixo, em letra miúda, para a referência não se
+   perder. Os quatro cards de contagem também ligam e desligam o filtro
+   correspondente — é o caminho mais curto entre ver um número e ver os
+   imóveis por trás dele. */
+function desenharNumeros(achados) {
+  const todos = TUDO.length;
+  const destaque = i => i.nota >= INDICE.nota_destaque;
+  const conta = (lista, f) => lista.reduce((n, i) => n + (f(i) ? 1 : 0), 0);
+
+  // os vetados são contados ignorando o próprio filtro que os esconde,
+  // senão o card mostraria zero para sempre
+  const comVetados = filtrar("sem_veto");
+  const mediana = f => {
+    const v = achados.map(f).filter(x => x != null).sort((a, b) => a - b);
+    if (!v.length) return null;
+    const m = v.length >> 1;
+    return v.length % 2 ? v[m] : (v[m - 1] + v[m]) / 2;
+  };
+
+  const campos = [
+    // O primeiro card nomeia o estado que está carregado, e a linha de
+    // baixo diz quantos estão em capital ou região metropolitana — a
+    // pergunta que substituiu "na RMR" quando o radar virou nacional.
+    { chave: "", rotulo: `Imóveis em ${UF_ATUAL || "—"}`, icone: "casa",
+      valor: num(achados.length),
+      sub: `${num(conta(achados, i => i.mercado_liquido))} em capital/RM`,
+      total: achados.length !== todos ? `de ${num(todos)}` : "" },
+    { chave: "destaques", rotulo: "Destaques", icone: "comparar", forte: true,
+      valor: num(conta(achados, destaque)),
+      sub: `nota ≥ ${(INDICE.nota_destaque || 0).toFixed(2)}`,
+      total: `de ${num(RESUMO.destaques)}` },
+    { chave: "novos", rotulo: "Novos", icone: "alerta",
+      valor: num(conta(achados, i => i.novo)), sub: "últimos 7 dias",
+      total: `de ${num(RESUMO.novos)}` },
+    { chave: "favoritos", rotulo: "Favoritos", icone: "estrela-cheia",
+      valor: num(conta(achados, i => FAVORITOS.has(i.id))),
+      sub: "guardados por você", total: `de ${num(FAVORITOS.size)}` },
+    { chave: "", rotulo: "Desconto anunciado", icone: "doc",
+      valor: pct(mediana(i => i.desconto_anunciado)), sub: "mediana" },
+    { chave: "", rotulo: "Desconto real", icone: "dinheiro", forte: true,
+      valor: pct(mediana(i => i.desconto_real)), sub: "depois de todo custo" },
+    { chave: "sem_veto", rotulo: "Vetados", icone: "x", invertido: true,
+      valor: num(conta(comVetados, i => i.classe === "vetado")),
+      sub: filtros.sem_veto ? "escondidos — clique" : "preço > avaliação",
+      total: `de ${num(RESUMO.vetados)}` },
+  ];
+
+  $("#numeros").innerHTML = campos.map(c => {
+    const ligado = c.chave &&
+      (c.invertido ? !filtros[c.chave] : filtros[c.chave]);
+    const corpo = `<dt>${icone(c.icone)}${c.rotulo}</dt>
+      <dd>${c.valor}${c.total ? `<i>${c.total}</i>` : ""}
+      <small>${c.sub}</small></dd>`;
+    if (!c.chave) {
+      return `<div class="numero ${c.forte ? "destaque" : ""}">${corpo}</div>`;
+    }
+    return `<button class="numero clicavel ${c.forte ? "destaque" : ""}"
+      type="button" data-card="${c.chave}" aria-pressed="${ligado}"
+      title="${ligado ? "Desligar este filtro" : "Ligar este filtro"}"
+      >${corpo}</button>`;
+  }).join("");
+}
+
+/* -------------------------------------------------------------- eventos */
+function trocarAba(nova) {
+  aba = nova;
+  document.querySelectorAll(".aba").forEach(b =>
+    b.setAttribute("aria-selected", String(b.dataset.aba === nova)));
+  $("#painel-lista").hidden = nova !== "lista";
+  $("#painel-comparar").hidden = nova !== "comparar";
+}
+
+function ligarEventos() {
+  const atualiza = () => { pagina = 1; desenhar() };
+  const numeroOu = v => v === "" ? null : +v;
+
+  $("#busca").oninput = e => { filtros.busca = e.target.value; atualiza() };
+  // trocar de estado baixa outro arquivo: é a única mudança de filtro que
+  // é assíncrona, e por isso tem tratamento próprio
+  $("#uf").onchange = e => { trocarUF(e.target.value) };
+  $("#cidade").onchange = e => {
+    filtros.cidade = e.target.value;
+    encherBairros();            // a lista de bairros segue a cidade
+    atualiza();
+  };
+  $("#bairro").onchange = e => { filtros.bairro = e.target.value; atualiza() };
+  $("#tipo").onchange = e => { filtros.tipo = e.target.value; atualiza() };
+  $("#ordem").onchange = e => { filtros.ordem = e.target.value; atualiza() };
+  $("#quartos").onchange = e => { filtros.quartos = e.target.value; atualiza() };
+  $("#pmin").oninput = e => { filtros.pmin = numeroOu(e.target.value); atualiza() };
+  $("#pmax").oninput = e => { filtros.pmax = numeroOu(e.target.value); atualiza() };
+  $("#amin").oninput = e => { filtros.amin = numeroOu(e.target.value); atualiza() };
+  $("#amax").oninput = e => { filtros.amax = numeroOu(e.target.value); atualiza() };
+
+  $("#chips").onclick = e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    const ligado = b.getAttribute("aria-pressed") === "true";
+    b.setAttribute("aria-pressed", String(!ligado));
+    filtros[b.dataset.f] = !ligado; atualiza();
+  };
+
+  $("#limpar").onclick = () => {
+    Object.assign(filtros, PADRAO_FILTROS);
+    ["busca", "cidade", "bairro", "tipo", "pmin", "pmax", "amin", "amax",
+     "quartos"].forEach(id => { $("#" + id).value = "" });
+    encherBairros();
+    document.querySelectorAll(".chip").forEach(c =>
+      c.setAttribute("aria-pressed", String(c.dataset.f === "sem_veto")));
+    atualiza();
+  };
+
+  // Os cards de contagem ligam e desligam o filtro que representam.
+  // "Vetados" é invertido: o filtro guardado é "sem_veto", então clicar
+  // no card para VER os vetados significa DESLIGAR esse filtro.
+  $("#numeros").onclick = e => {
+    const card = e.target.closest("[data-card]"); if (!card) return;
+    const chave = card.dataset.card;
+    filtros[chave] = !filtros[chave];
+    const chip = document.querySelector(`.chip[data-f="${chave}"]`);
+    if (chip) chip.setAttribute("aria-pressed", String(filtros[chave]));
+    pagina = 1; desenhar();
+  };
+
+  $("#mais").onclick = () => { pagina++; desenhar() };
+  document.querySelector(".abas").onclick = e => {
+    const b = e.target.closest(".aba"); if (b) trocarAba(b.dataset.aba);
+  };
+
+  $("#lista").onclick = e => {
+    const item = e.target.closest(".item"); if (!item) return;
+
+    // Clicar em qualquer lugar do cartão abre o detalhe — MENOS nos
+    // controles que já fazem outra coisa. Sem esta linha, tocar na
+    // estrela guardava o favorito E abria a gaveta por cima; e clicar
+    // em "Página da Caixa" abria o site da Caixa numa aba E a gaveta
+    // por baixo, que é o tipo de defeito que só aparece quando se
+    // testa o clique de verdade.
+    if (e.target.closest("[data-fav], a")) return;
+
+    const acao = e.target.closest("[data-acao]");
+    if (acao && acao.dataset.acao === "comparar") alternarCmp(item.dataset.id);
+    else abrirDetalhe(item.dataset.id);
+  };
+
+  // cliques que vêm da gaveta e da tabela de comparação
+  document.addEventListener("click", e => {
+    const fav = e.target.closest("[data-fav]");
+    if (fav) return alternarFavorito(fav.dataset.fav);
+    if (e.target.closest("[data-sair]")) return fecharDetalhe();
+    const cmp = e.target.closest("[data-cmp]");
+    if (cmp) return alternarCmp(cmp.dataset.cmp);
+    const tirar = e.target.closest("[data-tirar]");
+    if (tirar) return alternarCmp(tirar.dataset.tirar);
+    const det = e.target.closest("[data-detalhe]");
+    if (det) return abrirDetalhe(det.dataset.detalhe);
+  });
+  document.addEventListener("keydown", e => {
+    if (e.key !== "Escape") return;
+    // a gaveta de detalhe fica por cima; fecha ela primeiro
+    if (document.querySelector(".gaveta")) return fecharDetalhe();
+    if (document.body.classList.contains("filtros-abertos")) abrirFiltros(false);
+  });
+
+  $("#limpar-cmp").onclick = () => {
+    escolhidos = []; desenharComparacao(); desenhar();
+  };
+
+  /* --------------------------------------------- filtros como gaveta */
+  const abrirFiltros = ligar => {
+    document.body.classList.toggle("filtros-abertos", ligar);
+    $("#abrir-filtros").setAttribute("aria-expanded", String(ligar));
+    let fundo = document.querySelector(".sombra-filtros");
+    if (ligar && !fundo) {
+      document.body.insertAdjacentHTML("beforeend",
+        '<div class="sombra-filtros"></div>');
+      document.querySelector(".sombra-filtros").onclick = () => abrirFiltros(false);
+    }
+    if (!ligar && fundo) fundo.remove();
+  };
+  $("#abrir-filtros").onclick = () =>
+    abrirFiltros(!document.body.classList.contains("filtros-abertos"));
+  $("#fechar-filtros").onclick = () => abrirFiltros(false);
+  $("#ver-resultado").onclick = () => abrirFiltros(false);
+  // ao voltar para a largura de computador, a gaveta não pode ficar
+  // "aberta" por trás do layout normal
+  matchMedia("(min-width: 1081px)").addEventListener("change", e => {
+    if (e.matches) abrirFiltros(false);
+  });
+
+  $("#tema").onclick = () => {
+    const atual = document.documentElement.dataset.theme;
+    const escuro = atual === "dark" ||
+      (!atual && matchMedia("(prefers-color-scheme: dark)").matches);
+    document.documentElement.dataset.theme = escuro ? "light" : "dark";
+    try { localStorage.setItem("tema", document.documentElement.dataset.theme) }
+    catch (_) {}
+  };
+  try {
+    const salvo = localStorage.getItem("tema");
+    if (salvo) document.documentElement.dataset.theme = salvo;
+  } catch (_) {}
+}
+
+/* Qual estado abrir. Na ordem: o último que a pessoa escolheu (fica no
+   navegador dela), senão Pernambuco, senão o maior do acervo. Abrir no
+   maior por padrão seria abrir sempre no Rio de Janeiro, que é o arquivo
+   mais pesado e provavelmente não é o estado de quem está olhando. */
+function ufInicial() {
+  const existe = uf => (INDICE.estados || []).some(e => e.uf === uf);
+  let salvo = "";
+  try { salvo = localStorage.getItem(CHAVE_UF) || "" } catch (_) {}
+  if (salvo && existe(salvo)) return salvo;
+  if (existe(UF_PADRAO)) return UF_PADRAO;
+  return ((INDICE.estados || [])[0] || {}).uf || "";
+}
+
+(async () => {
+  lerFavoritos();
+  ligarEventos();
+  try {
+    INDICE = await carregarIndice();
+    TEXTOS = INDICE.textos_ressalvas || [];
+    desenharEstados();
+    await trocarUF(ufInicial(), true);
+    if (!DADOS_EMBUTIDOS) verSeJaEstaRodando();
+  } catch (erro) {
+    $("#lista").innerHTML = `<p class="vazio erro">
+      <strong>Não foi possível carregar a lista</strong>
+      O arquivo <code>dados/indice.json</code> não respondeu (${escapar(erro.message)}).
+      Rode o workflow "Atualizar radar" na aba Actions do GitHub e
+      aguarde alguns minutos.</p>`;
+    $("#contagem").textContent = "Erro ao carregar";
+  }
+})();
+</script>
