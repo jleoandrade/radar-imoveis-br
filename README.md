@@ -169,12 +169,25 @@ externa nenhuma. Duas abas:
 - **Lista** — todos os imóveis com o parecer, filtros, 20 por vez
 - **Comparar** — até três imóveis lado a lado, linha por linha
 
-**Um estado por vez.** O seletor de estado é o primeiro filtro e é o
-único que baixa outro arquivo. Num arquivo único os 18.266 imóveis dariam
-24 MB de JSON, e o Rio de Janeiro sozinho pesaria 8 MB — nenhum celular
-abre isso. Dividido por estado e compactado, o Rio tem 1,8 MB (406 KB na
-transferência) e carrega em cerca de um segundo. Estado já visitado fica
-em memória: voltar a ele é instantâneo.
+**Um estado por vez, ou todos.** O seletor de estado é o primeiro filtro e
+é o único que baixa outro arquivo. Num arquivo único os 18.266 imóveis
+dariam 24 MB de JSON, e o Rio de Janeiro sozinho pesaria 8 MB — nenhum
+celular abre isso. Dividido por estado e compactado, o Rio tem 1,8 MB
+(406 KB na transferência) e carrega em cerca de um segundo. Estado já
+visitado fica em memória: voltar a ele é instantâneo.
+
+A primeira opção do seletor é **Todos os estados**, que junta os 18.266
+numa lista só. Ela não é o padrão porque é o momento mais pesado do site:
+busca os 27 arquivos de uma vez, 1,4 MB comprimidos e 5,7 MB de JSON para
+o navegador interpretar. Medido num celular de entrada com 4G ruim
+(1,6 Mbps e processador 4x mais lento), leva cerca de 11 segundos — e por
+isso a tela mostra o andamento, "12 de 27 estados", em vez de ficar
+parada. Depois de carregado, filtrar os 18 mil responde em meio segundo.
+
+Com "Todos" ligado, o filtro de cidade mostra os 1.084 municípios com a UF
+ao lado — **Paulista/PE e Paulista/PB são duas opções**, não uma — e o
+filtro de bairro pede que você escolha a cidade antes, porque uma lista de
+3.941 bairros não serve para achar nada.
 
 A página abre no último estado que você escolheu; na primeira visita, em
 Pernambuco.

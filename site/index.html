@@ -433,6 +433,20 @@ select, input[type="search"], input[type="number"] {
 .vazio strong { display: block; color: var(--texto); margin-bottom: 4px;
   font-size: 15px }
 .erro { border-color: var(--veto); color: var(--veto) }
+
+/* O andamento de "Todos os estados". A barra é o próprio fundo do
+   elemento, desenhado com um gradiente que para em --parte: sem imagem,
+   sem elemento extra e sem animação que finja progresso que não existe.
+   A porcentagem é real — cada estado que termina de carregar move a
+   barra. */
+.progresso {
+  display: block; margin: 14px auto 0; max-width: 260px; padding: 5px 0;
+  font-size: 12px; font-variant-numeric: tabular-nums;
+  border: 1px solid var(--borda-forte); border-radius: 999px;
+  background: linear-gradient(to right,
+    var(--azul-vivo) var(--parte, 0%), transparent var(--parte, 0%));
+  color: var(--texto); transition: background .25s linear;
+}
 .mais { justify-self: center }
 
 /* ------------------------------------------------------------- comparar */
@@ -969,10 +983,16 @@ const filtros = { busca: "", cidade: "", bairro: "", tipo: "", pmin: null,
 const $ = s => document.querySelector(s);
 
 /* O estado escolhido NÃO entra em 'filtros' porque não é um filtro: é o
-   arquivo que está carregado. Limpar filtros não troca de estado. */
+   arquivo que está carregado. Limpar filtros não troca de estado.
+
+   TODOS é o valor para "Brasil inteiro": carrega os 27 arquivos de uma vez
+   (1,4 MB comprimidos, 5,7 MB de JSON) e junta tudo numa lista só. */
+const TODOS = "*";
 let UF_ATUAL = "";
 const CHAVE_UF = "radar-br:uf";
 const UF_PADRAO = "PE";
+const ehTodos = uf => uf === TODOS;
+let TODOS_OS_ESTADOS = false;
 
 /* ==================================================================
    FAVORITOS
@@ -1137,26 +1157,123 @@ async function carregarUF(uf) {
   return pronto;
 }
 
+/* "Todos os estados": baixa os 27 arquivos em paralelo e junta.
+
+   Custo real, medido: 1,4 MB comprimidos na rede e 5,7 MB de JSON para o
+   navegador interpretar, resultando em 18 mil objetos em memória. Num
+   computador é instantâneo; num celular antigo é o momento mais pesado do
+   site inteiro. Por isso NÃO é o padrão: o site abre num estado e só vai
+   buscar tudo se a pessoa pedir.
+
+   Os 27 arquivos passam pelo mesmo carregarUF() de sempre, então cada um
+   é completado com o resumo do PRÓPRIO estado — é isso que mantém a
+   região metropolitana certa em cada cidade. Juntar primeiro e completar
+   depois misturaria Paulista/PB com Paulista/PE. */
+async function carregarTodos(avisar) {
+  if (CACHE_UF.has(TODOS)) return CACHE_UF.get(TODOS);
+
+  const ufs = (INDICE.estados || []).map(e => e.uf);
+
+  // Medido num celular de entrada com 4G ruim (1,6 Mbps, processador 4x
+  // mais lento): 7,7 segundos. Sete segundos de tela parada parecem
+  // defeito, então cada estado que chega avisa. Não acelera nada —
+  // só conta o que está acontecendo, que é o suficiente para a pessoa
+  // esperar em vez de achar que travou.
+  let prontos = 0;
+  const partes = await Promise.all(ufs.map(uf =>
+    carregarUF(uf).then(parte => {
+      prontos++;
+      if (avisar) avisar(prontos, ufs.length);
+      return parte;
+    })));
+
+  const imoveis = [];
+  const cidades = [];
+  const tipos = {};
+  for (const parte of partes) {
+    for (const i of parte.imoveis) imoveis.push(i);
+    for (const c of parte.resumo.cidades || []) cidades.push(c);
+    for (const [t, n] of Object.entries(parte.resumo.tipos || {})) {
+      tipos[t] = (tipos[t] || 0) + n;
+    }
+  }
+  imoveis.sort((a, b) => b.nota - a.nota
+    || a.uf.localeCompare(b.uf) || a.cidade.localeCompare(b.cidade, "pt-BR"));
+  cidades.sort((a, b) => b.total - a.total
+    || a.cidade.localeCompare(b.cidade, "pt-BR"));
+
+  // o resumo do "país" vem do índice, que já traz as contagens nacionais
+  const pronto = {
+    resumo: {
+      ...INDICE, uf: TODOS, nome: "Brasil", cidades, tipos,
+      tem_catalogo_rm: true,
+    },
+    imoveis,
+  };
+  CACHE_UF.set(TODOS, pronto);
+  return pronto;
+}
+
 /* Troca o estado na tela. Devolve o controle já com a lista redesenhada.
    Enquanto o arquivo não chega, a lista mostra que está carregando: num
    celular em 4G o Rio de Janeiro leva uns dois segundos, e tela parada
    sem explicação parece defeito. */
 async function trocarUF(uf, primeiraVez) {
-  uf = String(uf || "").toUpperCase();
+  uf = ehTodos(uf) ? TODOS : String(uf || "").toUpperCase();
   if (!uf || uf === UF_ATUAL) return;
 
   const select = $("#uf");
   if (select) select.disabled = true;
   if (!CACHE_UF.has(uf)) {
-    $("#lista").innerHTML = `<p class="vazio">${icone("atualizar")}
-      <strong>Carregando ${escapar(nomeUF(uf))}…</strong>
-      São ${num((estadoNoIndice(uf) || {}).total || 0)} imóveis.</p>`;
+    const total = (INDICE.estados || []).length;
+    const quantos = ehTodos(uf)
+      ? num(INDICE.total) : num((estadoNoIndice(uf) || {}).total || 0);
+    $("#lista").innerHTML = ehTodos(uf)
+      ? `<p class="vazio">${icone("atualizar")}
+           <strong>Carregando o Brasil inteiro…</strong>
+           São ${quantos} imóveis, de ${total} arquivos. No celular leva
+           alguns segundos.
+           <span class="progresso" id="carregando-uf"
+                 style="--parte:0%">0 de ${total} estados</span></p>`
+      : `<p class="vazio">${icone("atualizar")}
+           <strong>Carregando ${escapar(nomeUF(uf))}…</strong>
+           São ${quantos} imóveis.</p>`;
     $("#contagem").textContent = "carregando…";
+    // o "Mostrar mais 20" é da lista anterior: escondê-lo enquanto
+    // carrega evita um botão que não faz nada na tela
+    $("#mais").hidden = true;
+  }
+
+  /* O ANDAMENTO PRECISA APARECER EM DOIS LUGARES, e isso só ficou claro
+     olhando a tela do celular: lá os filtros são uma gaveta que cobre a
+     página inteira, então a mensagem de "carregando" que vai na lista fica
+     ATRÁS dela. Durante os onze segundos do "Todos os estados" a gaveta
+     continuava mostrando os números do estado anterior — "1.060 imóveis em
+     68 cidades", "Ver 1.018 imóveis" — e parecia que o toque não tinha
+     feito nada.
+     Por isso a dica embaixo do seletor e o botão do rodapé também contam
+     o progresso: são os dois pontos visíveis com a gaveta aberta. */
+  const andamento = (prontos, total) => {
+    const barra = $("#carregando-uf");
+    if (barra) {
+      barra.textContent = `${prontos} de ${total} estados`;
+      barra.style.setProperty("--parte", (prontos / total * 100) + "%");
+    }
+    const dica = $("#dica-uf");
+    if (dica) dica.textContent =
+      `Carregando o Brasil inteiro… ${prontos} de ${total} estados.`;
+    const botao = $("#ver-resultado");
+    if (botao) botao.textContent = `Carregando… ${prontos}/${total}`;
+  };
+  if (ehTodos(uf) && !CACHE_UF.has(uf)) {
+    andamento(0, (INDICE.estados || []).length);
   }
 
   try {
-    const dados = await carregarUF(uf);
+    const dados = ehTodos(uf)
+      ? await carregarTodos(andamento) : await carregarUF(uf);
     UF_ATUAL = uf;
+    TODOS_OS_ESTADOS = ehTodos(uf);
     TUDO = dados.imoveis;
     RESUMO = dados.resumo;
     try { localStorage.setItem(CHAVE_UF, uf) } catch (_) {}
@@ -1175,8 +1292,10 @@ async function trocarUF(uf, primeiraVez) {
     desenharComparacao();
   } catch (erro) {
     $("#lista").innerHTML = `<p class="vazio erro">
-      <strong>Não foi possível carregar ${escapar(nomeUF(uf))}</strong>
-      O arquivo <code>dados/uf/${escapar(uf)}.json</code> não respondeu
+      <strong>Não foi possível carregar ${escapar(ehTodos(uf)
+        ? "o Brasil inteiro" : nomeUF(uf))}</strong>
+      ${ehTodos(uf) ? "Um dos 27 arquivos de estado não respondeu"
+        : `O arquivo <code>dados/uf/${escapar(uf)}.json</code> não respondeu`}
       (${escapar(erro.message)}).</p>`;
     $("#contagem").textContent = "Erro ao carregar";
     if (select) select.value = UF_ATUAL;
@@ -1190,6 +1309,10 @@ const estadoNoIndice = uf =>
   (INDICE.estados || []).find(e => e.uf === uf);
 const nomeUF = uf => (estadoNoIndice(uf) || {}).nome || uf;
 
+/* A identidade de um município: "PE|Paulista" não é "PB|Paulista".
+   Um lugar só define isso, para não haver dois jeitos de montar a chave. */
+const chaveCidade = i => i.uf + "|" + i.cidade;
+
 /* ------------------------------------------------------------- filtrar */
 /* 'ignorar' deixa calcular quantos imóveis um filtro está escondendo.
    O card de Vetados precisa disso: com "Sem vetados" ligado eles nunca
@@ -1199,7 +1322,7 @@ function filtrar(ignorar) {
   const b = filtros.busca.toLowerCase().trim();
   const vale = n => filtros[n] && n !== ignorar;
   return TUDO.filter(i => {
-    if (filtros.cidade && i.cidade !== filtros.cidade) return false;
+    if (filtros.cidade && chaveCidade(i) !== filtros.cidade) return false;
     if (filtros.bairro && i.bairro !== filtros.bairro) return false;
     if (filtros.tipo && i.tipo !== filtros.tipo) return false;
     if (filtros.pmin != null && i.preco < filtros.pmin) return false;
@@ -1727,14 +1850,22 @@ async function recarregarDados() {
   CACHE_UF.clear();
 
   const uf = UF_ATUAL || ufInicial();
-  const ru = await fetch(`dados/uf/${uf}.json?t=` + Date.now(),
-                         { cache: "no-store" });
-  if (!ru.ok) throw new Error("HTTP " + ru.status);
-  const bruto = await ru.json();
-  RESUMO = bruto.resumo || {};
-  TUDO = completar(descompactar(bruto.imoveis || {}), RESUMO);
-  CACHE_UF.set(uf, { resumo: RESUMO, imoveis: TUDO });
+  if (ehTodos(uf)) {
+    // com "Todos" ligado não há um arquivo para rebuscar: carregarTodos()
+    // refaz os 27 a partir do cache já esvaziado logo acima
+    const dados = await carregarTodos();
+    RESUMO = dados.resumo; TUDO = dados.imoveis;
+  } else {
+    const ru = await fetch(`dados/uf/${uf}.json?t=` + Date.now(),
+                           { cache: "no-store" });
+    if (!ru.ok) throw new Error("HTTP " + ru.status);
+    const bruto = await ru.json();
+    RESUMO = bruto.resumo || {};
+    TUDO = completar(descompactar(bruto.imoveis || {}), RESUMO);
+    CACHE_UF.set(uf, { resumo: RESUMO, imoveis: TUDO });
+  }
   UF_ATUAL = uf;
+  TODOS_OS_ESTADOS = ehTodos(uf);
 
   const cidade = $("#cidade").value, tipo = $("#tipo").value;
   desenharEstados();
@@ -1860,9 +1991,18 @@ function desenharTopo() {
     `<div class="risco"><b>${escapar(a.titulo)}</b>
      <p>${escapar(a.texto)}</p></div>`).join("");
 
+  /* A CHAVE DA CIDADE É "UF|Cidade", SEMPRE — inclusive com um estado só.
+     Com "Todos os estados" o seletor teria 1.084 opções e 16 nomes
+     repetidos: Paulista é PB e é PE, Santa Rita é MA e PB. Comparar por
+     nome juntaria os dois mercados num filtro só, em silêncio — o mesmo
+     erro que o projeto corrige nos dados, reintroduzido na tela.
+     Uma chave só, nos dois modos, para não existir um caminho certo e
+     outro errado. */
   const cidades = RESUMO.cidades || [];
-  $("#cidade").innerHTML = `<option value="">Todas (${cidades.length})</option>`
-    + cidades.map(c => `<option value="${escapar(c.cidade)}">${escapar(c.cidade)} (${c.total})</option>`).join("");
+  $("#cidade").innerHTML = `<option value="">Todas (${num(cidades.length)})</option>`
+    + cidades.map(c => `<option value="${escapar(c.uf + "|" + c.cidade)}"
+        >${escapar(c.cidade)}${TODOS_OS_ESTADOS ? "/" + escapar(c.uf) : ""}
+         (${num(c.total)})</option>`).join("");
   $("#tipo").innerHTML = `<option value="">Todos</option>`
     + Object.entries(RESUMO.tipos || {}).sort((a, b) => b[1] - a[1])
       .map(([t, n]) => `<option value="${escapar(t)}">${escapar(t)} (${n})</option>`).join("");
@@ -1877,10 +2017,30 @@ function desenharTopo() {
    lista alfabética. */
 function desenharEstados() {
   const estados = INDICE.estados || [];
-  $("#uf").innerHTML = estados.map(e =>
-    `<option value="${escapar(e.uf)}">${escapar(e.uf)} — ${escapar(e.nome)}
-      (${num(e.total)})</option>`).join("");
+  const municipios = estados.reduce((n, e) => n + (e.cidades || 0), 0);
+
+  // "Todos" vem primeiro, mas NÃO é o padrão de abertura: ele baixa os 27
+  // arquivos de uma vez, e isso é o momento mais pesado do site.
+  // optgroup, e não uma linha de traços com 'disabled': o agrupamento é o
+  // que o navegador e o leitor de tela entendem, e não cria uma opção
+  // vazia que dá para tentar escolher.
+  $("#uf").innerHTML =
+    `<option value="${TODOS}">Todos os estados (${num(INDICE.total)})</option>`
+    + `<optgroup label="Um estado por vez">` + estados.map(e =>
+      `<option value="${escapar(e.uf)}">${escapar(e.uf)} — ${escapar(e.nome)}
+        (${num(e.total)})</option>`).join("") + `</optgroup>`;
   $("#uf").value = UF_ATUAL;
+
+  if (TODOS_OS_ESTADOS) {
+    const semRM = estados.filter(e => !e.tem_catalogo_rm).map(e => e.uf);
+    $("#dica-uf").textContent =
+      `${num(INDICE.total)} imóveis em ${num(municipios)} municípios dos ` +
+      `${estados.length} estados.` + (semRM.length
+        ? ` Em ${semRM.join(", ")} o projeto ainda não tem lista de região` +
+          ` metropolitana conferida, então ali só a capital é distinguida.`
+        : "");
+    return;
+  }
 
   const atual = estadoNoIndice(UF_ATUAL);
   if (!atual) { $("#dica-uf").textContent = ""; return }
@@ -1896,13 +2056,27 @@ function desenharEstados() {
 }
 
 /* ------------------------------------------------------------- bairros */
-/* São 237 bairros na lista inteira, e 133 deles têm um imóvel só. Uma
-   lista dessas é inútil, então ela segue a cidade escolhida: com Olinda
-   no filtro, só os bairros de Olinda aparecem. Os nomes saem do próprio
-   radar.json, não de um campo novo — assim nada precisa mudar no robô. */
+/* A lista de bairros segue a cidade escolhida: com Olinda no filtro, só os
+   bairros de Olinda aparecem. Em Pernambuco são 241 bairros e 133 deles
+   têm um imóvel só — uma lista dessas, inteira, já é inútil.
+
+   Com "Todos os estados" seriam 3.941 nomes distintos. Ninguém acha um
+   bairro numa lista de 3.941, e o celular trava para desenhá-la. Então,
+   acima do TETO e sem cidade escolhida, o seletor diz para escolher a
+   cidade primeiro. Não é limite técnico: é que a lista grande não serve.
+
+   ⚠️ O bairro é comparado por NOME, não por "UF|Cidade|Bairro". Sem cidade
+   escolhida isso significa "qualquer bairro com este nome no que está
+   carregado" — dentro de um estado é uma leitura razoável, e é o
+   comportamento que o radar sempre teve. COM cidade escolhida não há
+   ambiguidade nenhuma, porque o filtro de cidade já restringiu a um
+   município. E o caso perigoso — "Centro" somando 300 municípios de
+   estados diferentes — é justamente o que o teto acima impede. */
+const TETO_BAIRROS = 400;
+
 function encherBairros() {
   const dentro = filtros.cidade
-    ? TUDO.filter(i => i.cidade === filtros.cidade) : TUDO;
+    ? TUDO.filter(i => chaveCidade(i) === filtros.cidade) : TUDO;
   const conta = new Map();
   for (const i of dentro) {
     if (i.bairro) conta.set(i.bairro, (conta.get(i.bairro) || 0) + 1);
@@ -1913,9 +2087,25 @@ function encherBairros() {
   // se o bairro escolhido não existe na cidade nova, some sozinho
   if (filtros.bairro && !conta.has(filtros.bairro)) filtros.bairro = "";
 
-  $("#bairro").innerHTML = `<option value="">Todos (${lista.length})</option>`
+  if (!filtros.cidade && lista.length > TETO_BAIRROS) {
+    filtros.bairro = "";
+    // Texto curto de propósito: no celular o seletor é estreito e
+    // "Escolha uma cidade primeiro (3.941 bairros)" cortava em
+    // "Escolha uma cidade primeiro (3." — o que parece defeito. A
+    // contagem completa fica no title, para quem quiser.
+    $("#bairro").innerHTML =
+      `<option value="">Escolha a cidade primeiro</option>`;
+    $("#bairro").title =
+      `${num(lista.length)} bairros no que está carregado — escolha a `
+      + `cidade para ver só os dela`;
+    $("#bairro").value = "";
+    $("#bairro").disabled = true;
+    return;
+  }
+
+  $("#bairro").innerHTML = `<option value="">Todos (${num(lista.length)})</option>`
     + lista.map(([b, n]) =>
-      `<option value="${escapar(b)}">${escapar(b)} (${n})</option>`).join("");
+      `<option value="${escapar(b)}">${escapar(b)} (${num(n)})</option>`).join("");
   $("#bairro").value = filtros.bairro;
   $("#bairro").disabled = !lista.length;
 }
@@ -1946,7 +2136,8 @@ function desenharNumeros(achados) {
     // O primeiro card nomeia o estado que está carregado, e a linha de
     // baixo diz quantos estão em capital ou região metropolitana — a
     // pergunta que substituiu "na RMR" quando o radar virou nacional.
-    { chave: "", rotulo: `Imóveis em ${UF_ATUAL || "—"}`, icone: "casa",
+    { chave: "", rotulo: TODOS_OS_ESTADOS ? "Imóveis no Brasil"
+        : `Imóveis em ${UF_ATUAL || "—"}`, icone: "casa",
       valor: num(achados.length),
       sub: `${num(conta(achados, i => i.mercado_liquido))} em capital/RM`,
       total: achados.length !== todos ? `de ${num(todos)}` : "" },
@@ -2131,7 +2322,7 @@ function ligarEventos() {
    maior por padrão seria abrir sempre no Rio de Janeiro, que é o arquivo
    mais pesado e provavelmente não é o estado de quem está olhando. */
 function ufInicial() {
-  const existe = uf => (INDICE.estados || []).some(e => e.uf === uf);
+  const existe = uf => ehTodos(uf) || (INDICE.estados || []).some(e => e.uf === uf);
   let salvo = "";
   try { salvo = localStorage.getItem(CHAVE_UF) || "" } catch (_) {}
   if (salvo && existe(salvo)) return salvo;

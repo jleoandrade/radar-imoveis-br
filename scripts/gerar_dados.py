@@ -541,7 +541,11 @@ def montar_resumo_uf(uf: str, imoveis: list[dict]) -> dict:
         c["vetados"] += i["classe"] == "vetado"
         c["precos"].append(i["preco"])
 
+    # a UF viaja em cada cidade porque a página usa "UF|Cidade" como chave
+    # do filtro: com "Todos os estados" ligado, Paulista/PB e Paulista/PE
+    # são duas opções e não podem virar uma só
     cidades = [{
+        "uf": uf,
         "cidade": c["cidade"], "praca": c["praca"], "rm": c["rm"],
         "total": c["total"], "destaques": c["destaques"],
         "vetados": c["vetados"], "preco_mediano": med(c["precos"]),

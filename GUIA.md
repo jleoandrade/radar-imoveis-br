@@ -42,11 +42,17 @@ sozinho, baixa a lista de imóveis da Caixa dos 27 estados, calcula o
 desconto real de cada um e republica o seu site. Você acessa de qualquer
 celular.
 
-São **18.266 imóveis em 1.068 cidades**. O site mostra **um estado por
+São **18.266 imóveis em 1.084 municípios**. O site mostra **um estado por
 vez** — o seletor "Estado" é o primeiro filtro, e ele abre em Pernambuco
 na primeira visita e depois sempre no último estado que você escolheu.
 Isso não é limitação de tela: num arquivo só, os 18 mil imóveis dariam 24
 MB de JSON e nenhum celular abriria a página.
+
+A primeira opção do seletor é **Todos os estados**, que mostra os 18.266
+de uma vez. Ela funciona, mas demora: no celular leva uns 10 segundos para
+carregar (uma tarja mostra "12 de 27 estados" enquanto isso). Depois de
+carregada, filtrar é instantâneo. Use quando quiser comparar oportunidades
+entre estados; para o dia a dia, escolher o estado é mais rápido.
 
 ---
 
