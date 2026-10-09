@@ -276,7 +276,8 @@
 "8444427944008": {
 "situacao": "nao_informada",
 "trecho": "",
-"lido_em": "2026-10-01"
+"existe": "indefinido",
+"lido_em": "2026-10-09"
 },
 "10210871": {
 "situacao": "nao_informada",
@@ -830,7 +831,8 @@
 "1444414878100": {
 "situacao": "nao_informada",
 "trecho": "",
-"lido_em": "2026-10-01"
+"existe": "indefinido",
+"lido_em": "2026-10-09"
 },
 "8444410868494": {
 "situacao": "nao_informada",
@@ -1781,7 +1783,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-01"
+"lido_em": "2026-10-09"
 },
 "8091700011193": {
 "situacao": "nao_informada",
@@ -1823,7 +1825,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-01"
+"lido_em": "2026-10-09"
 },
 "8444431280895": {
 "situacao": "nao_informada",
@@ -2429,7 +2431,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-01"
+"lido_em": "2026-10-09"
 },
 "8444416613528": {
 "situacao": "nao_informada",
@@ -2453,7 +2455,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-01"
+"lido_em": "2026-10-09"
 },
 "8555514360464": {
 "situacao": "nao_informada",
@@ -2639,7 +2641,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-01"
+"lido_em": "2026-10-09"
 },
 "8787709247200": {
 "situacao": "nao_informada",
@@ -2867,7 +2869,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-01"
+"lido_em": "2026-10-09"
 },
 "8444433838109": {
 "situacao": "nao_informada",
@@ -3005,7 +3007,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-01"
+"lido_em": "2026-10-09"
 },
 "8444412998441": {
 "situacao": "nao_informada",
@@ -3041,7 +3043,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-01"
+"lido_em": "2026-10-09"
 },
 "8444407826646": {
 "situacao": "nao_informada",
@@ -3095,7 +3097,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-01"
+"lido_em": "2026-10-09"
 },
 "8787717558286": {
 "situacao": "nao_informada",
@@ -3497,7 +3499,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-02"
+"lido_em": "2026-10-09"
 },
 "8787715095114": {
 "situacao": "nao_informada",
@@ -3515,31 +3517,31 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-02"
+"lido_em": "2026-10-09"
 },
 "8787712821370": {
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-02"
+"lido_em": "2026-10-09"
 },
 "8444414943067": {
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-02"
+"lido_em": "2026-10-09"
 },
 "8787712253312": {
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-02"
+"lido_em": "2026-10-09"
 },
 "8444429322071": {
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-02"
+"lido_em": "2026-10-09"
 },
 "8787711140000": {
 "situacao": "nao_informada",
@@ -3551,7 +3553,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-02"
+"lido_em": "2026-10-09"
 },
 "8444427047669": {
 "situacao": "nao_informada",
@@ -3839,7 +3841,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-02"
+"lido_em": "2026-10-09"
 },
 "8444414000111": {
 "situacao": "nao_informada",
@@ -4757,7 +4759,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-02"
+"lido_em": "2026-10-09"
 },
 "8787712118164": {
 "situacao": "nao_informada",
@@ -4883,7 +4885,7 @@
 "situacao": "nao_informada",
 "trecho": "",
 "existe": "indefinido",
-"lido_em": "2026-10-02"
+"lido_em": "2026-10-09"
 },
 "8787713962996": {
 "situacao": "nao_informada",
@@ -37572,5 +37574,3479 @@
 "trecho": "",
 "existe": "indefinido",
 "lido_em": "2026-10-08"
+},
+"8444426655797": {
+"situacao": "ocupado",
+"trecho": "Situação: Ocupado",
+"existe": "vivo",
+"lido_em": "2026-10-09"
+},
+"8444412266122": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444412737451": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703640929": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444406734233": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444409975690": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444413425437": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444425660177": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444418217930": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444416946268": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444417255724": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444425823939": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444408558599": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444424882192": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10012200": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10147349": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10005427": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444413778550": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704350460": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711186956": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555536003451": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537719612": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711337393": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706992958": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444405954469": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10145764": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10187216": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444415913749": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444410706796": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444404604189": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444416441158": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444411761499": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444403199604": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444428733833": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444425546927": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444426554877": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444412909856": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711528970": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555525832575": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787700322810": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710286094": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705568850": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713012831": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1787701904009": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444401812040": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444415775745": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444407787553": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444427528276": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787700577630": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711531149": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703714558": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444427174121": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10139821": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10139822": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444416442474": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444407899490": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444409607933": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444410765695": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706054117": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787717482549": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702584723": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444415700780": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555538556334": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787718408636": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444412464668": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444435244583": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444416372662": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787700728213": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429405902": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444430435151": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444401241522": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555526493928": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703015293": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706847834": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444415153205": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444415106525": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444436205646": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444431602175": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444434481174": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444408141426": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444423545508": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444418751596": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444435511131": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444434597385": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444420568159": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444426268831": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444436425980": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444423802411": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444434152545": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429760230": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444434874052": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444434514951": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429811072": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444432781880": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444433748320": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713091308": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704779467": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444428270515": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429517174": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444430076283": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444431435481": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444422282341": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429503645": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429789620": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444414809301": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444425436064": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444401640311": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555519590328": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444419355548": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444426875940": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429886730": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555526407940": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555519208105": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429526670": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787719816428": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555513281935": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444401745962": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707415032": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1787701674933": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705863232": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444419384840": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787709113831": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710413797": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710337926": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444408581452": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711777377": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444424431298": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10139771": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10139775": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555523323150": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555509851706": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703237610": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703094665": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537195850": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703000920": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703008033": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444432024663": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706883946": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706034213": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706105765": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787716769720": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444412386713": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704195392": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"7049000001130": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1159120080399": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555539708421": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555539763767": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710512019": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715186195": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787716952630": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787714688090": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787717452879": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444428343890": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444405797730": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444405937345": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787700112620": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444418406856": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444418182230": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713180505": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444420091484": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537485700": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701270962": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708660553": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444427660514": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555512095119": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708038836": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444423137851": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706404452": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444412748569": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444426400675": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555511199930": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787720419828": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787716492885": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713693618": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787717359160": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444402693364": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555536053262": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787700609508": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555508947440": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555514334730": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555509282442": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444426359535": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555526715459": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703089815": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711540504": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444415075808": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444412556031": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444406063659": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444431522538": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444432083651": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444433126397": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787714376918": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706192234": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444432160940": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444401158420": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787718700019": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715399229": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787716440346": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444423224264": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444419417061": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701756733": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444416987029": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444436827140": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555534269675": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555524002129": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444428287663": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444426529198": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444423642112": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444426379218": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429977000": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444434506754": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429357282": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444400787106": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444411486676": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444417454849": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429267208": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444427027595": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444420808206": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444415405184": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704484130": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555539763317": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706311519": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703722658": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706102758": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1787700722802": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444400950661": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444406017380": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444415429180": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444422626687": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444406622834": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555530177270": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715400553": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537925107": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444408488738": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704316971": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710194335": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444438182970": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444406318256": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444425190162": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444413385982": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701528706": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787700988479": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701146242": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444417211482": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555503382615": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444416607708": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555533892417": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444428911324": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444405788607": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444423981758": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444414636962": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444406770396": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704782824": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701456179": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1787701808018": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787700354267": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787714182609": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702864998": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705144368": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444407676490": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715224984": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715591081": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715842092": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715749360": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787709794987": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444413901930": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555536485332": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555536400574": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555536485324": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555536891985": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537047894": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537175434": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537200935": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537703376": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537862954": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555538016127": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555539071806": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555539152938": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701062138": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701378780": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701568619": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702021818": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444427082227": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555536797180": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555536878814": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537226829": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537623356": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537827385": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555538251975": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555538890498": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555539252460": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555539378006": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787700985283": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701014729": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701708291": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702347888": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702494295": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702695592": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706410681": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702760211": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703888238": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704313468": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707168752": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704253570": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703492121": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707671233": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707703100": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444409502805": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444407228511": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703760495": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705018060": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705414101": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707530079": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704642330": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704673111": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703368340": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705277821": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444404953347": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444410433382": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444421687542": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8406270001377": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444421037450": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444402328753": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444426274386": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707413358": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702705423": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701747467": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705922425": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701798460": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705912241": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704786188": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704956229": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701476900": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444408115603": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705413504": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705317203": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705324960": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705533828": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704464164": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704538826": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444420124511": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444404390715": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444407599552": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444400734314": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444419822871": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444410080546": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444404570420": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8021370005607": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444419293320": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1555524125664": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444420793049": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444408350396": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444401972977": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444409334961": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8406270004295": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444433274159": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444415905428": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713159670": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787712034696": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787714555251": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787716297837": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713469467": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715078104": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715149931": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715300940": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715555700": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787716154408": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713176141": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787714200500": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715041880": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711768149": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787712089601": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715760940": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787717012011": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713844616": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787714988590": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787700740736": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444403193339": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444433293285": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555533398358": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555533576981": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555522200250": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555534109538": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701793922": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703865106": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708283245": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708446110": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702216228": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705722884": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706079012": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708446497": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703967731": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707678440": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707555470": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707611567": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713640239": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705758650": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708437315": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787709725993": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715068672": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710667900": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444417652896": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705943724": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711699023": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444424450071": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444423938933": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444413550681": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444422889041": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444416844899": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444418008729": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444422261700": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444422940500": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444421031868": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444415090807": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444423150341": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444412821207": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444417148950": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444419734830": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444420010280": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444418952923": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444424808596": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444418195316": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444433504847": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444418300047": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444421193760": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444422701654": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444428566384": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444416519211": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444417695935": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444423141741": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444424597692": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444433840863": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444415276960": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444434372677": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444437409385": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702918575": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704012867": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429531584": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429627492": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444423123697": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429060603": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444425661076": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444431373206": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708575351": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708762275": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787709015996": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787709221529": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8414570002043": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444411811216": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555525895879": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444436863279": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1787701140599": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706380634": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706380014": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706382262": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710972788": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787716629724": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710423997": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707934790": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710268584": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708129300": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708407904": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8323870001614": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555510149882": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555513911505": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701161870": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444419236865": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10290964": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701829927": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555538366519": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701942570": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537941960": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555538437556": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706034795": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704316459": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701697095": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701503070": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703040700": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704465837": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705670337": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787703089637": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704063968": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444406672637": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555534230272": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705912691": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705803990": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704586499": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8099570020355": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444416588817": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444415125076": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707261795": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444413340180": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707629822": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706188830": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444408332906": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444401901638": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444404161295": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444419118600": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787715746280": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444404027424": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444423711394": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"10290963": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444412295157": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710306273": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787712634693": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444429888784": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787712465387": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444422665437": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444409077756": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444408338530": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444407185918": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555513047940": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444425884997": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701532452": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787702376969": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787717160703": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707878652": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787714280635": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787714428349": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555527935029": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537478089": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1787701614663": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710729433": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708110758": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708503083": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713208264": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1787701111777": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704898695": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787708314671": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787700886650": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706657695": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706682452": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787709265739": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711470050": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711991360": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713927538": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787707999280": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787704698017": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711923802": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787720169899": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787709761124": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555536267769": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537552955": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537626436": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787705559118": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555537072201": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713848131": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787718127793": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787719271618": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555538482667": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555539804595": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787709443297": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787710835772": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711029222": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787712353872": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713835439": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701609102": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555535840031": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787701074276": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787706845238": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787712291346": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787713522570": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787714143336": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787714326953": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8787711835164": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444415898237": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444410286690": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444421879522": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444404541278": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8555511287634": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444403563551": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444414540485": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444419158890": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444401281532": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444418606156": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444416570942": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444418565263": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"8444403082677": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
+},
+"1444406415733": {
+"situacao": "nao_informada",
+"trecho": "",
+"existe": "indefinido",
+"lido_em": "2026-10-09"
 }
 }
